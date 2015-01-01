@@ -1,12 +1,17 @@
 nav .container {
   color: white;
 }
+/* log_in or sign_up */
+.absolute_position{
+  position: absolute !important;
+  right: 2px !important;
+}
 .lay_out_search {
   height: 50px;
   float: left;
   margin-top: 30px;
 }
-/*search input*/
+/* search input */
 .search {
   font-size: 20px;
   position: relative;
@@ -17,7 +22,7 @@ nav .container {
   float: left;
   margin-top: 30px;
 }
-/*search button*/
+/* search button */
 .search_submit {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
@@ -25,7 +30,7 @@ nav .container {
   float: left;
   margin-top: 30px;
 }
-/*a tag style*/
+/* a tag style */
 .a_style {
   padding-left: 0px !important;
 }

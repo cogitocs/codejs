@@ -5,14 +5,20 @@ block content
   .container
     .row
       input.form-control.search(type="search",placeholder="Best Code Search")
-      button.btn.btn-success.search_submit(type="button") Search
+      button#search.btn.btn-success.search_submit(type="button") Search
+      button#add_chapter.btn.btn-success.search_submit(type="button") 
+        i.fa.fa-plus(style="cursor:pointer")
+            //-         li(style="margin-top:15px;")
+            //- i#post_plus.fa.fa-plus(style="cursor:pointer")
+
+
     .row
       table(style="margin-top:30px")
         tbody
-          for blog in blog_list
+          for blog in data
             tr
               td 
-                a #{blog}
+                a #{blog.post_title}
 
 
       nav

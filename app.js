@@ -8,6 +8,7 @@ var colors = require('colors');
 var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var post_add = require('./routes/post_add');
 
 var app = express();
 
@@ -28,11 +29,14 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 app.use('/', routes);
 app.use('/users', users);
+// console.log(post_add);
+app.use('/post_add', post_add);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
+    console.log(err);
     next(err);
 });
 mongodb_uri = 'mongodb://localhost/ivan?poolSize=5';

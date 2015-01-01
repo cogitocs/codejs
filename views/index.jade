@@ -1,0 +1,28 @@
+extends layout
+block title
+  title #{title}
+block content
+  .container
+    .row
+      input.form-control.search(type="search",placeholder="Best Code Search")
+      button.btn.btn-success.search_submit(type="button") Search
+    .row
+      table(style="margin-top:30px")
+        tbody
+          for blog in blog_list
+            tr
+              td 
+                a #{blog}
+
+
+      nav
+        ul.pagination
+          li
+            a(href="#") &laquo;
+            a(href="#") 1
+            a(href="#") 2
+            a(href="#") 3
+            a(href="#") 4
+            a(href="#") &raquo;
+block page_script
+  script(src='/pagejs/app_index.js', type='text/javascript')

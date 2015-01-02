@@ -6,25 +6,49 @@
  */
 (function(document) {
 	$("body").on('click', '#search', function(event) {
-		event.preventDefault();
-		if ($(".search").val()) {
-			alertModal("你搜索的代码这世界上不存在！！！Are U Kidding Me?", null, null)
+			event.preventDefault();
+			if ($(".search").val()) {
+				alertModal("你搜索的代码这世界上不存在！！！Are U Kidding Me?", null, null)
 
-		} else {
-			alertModal("请输入搜索代码!!!", null, null)
+			} else {
+				alertModal("请输入搜索代码!!!", null, null)
 
-		}
+			}
 
-	}).on('click', '#add_chapter', function(event) {
-		event.preventDefault();
-		var obj = {
-			post_title: "每天读点好书"
-		}
-		$.post('/post_add', obj, function(data) {
-			console.log(data);
+		}).on('click', '#add_chapter', function(event) {
+			event.preventDefault();
+			var obj = {
+				post_title: "每天读点好书"
+			}
+			$.post('/post_add', obj, function(data) {
+				console.log(data);
+			})
 		})
-	})
-
+		//angular operator
+	// function PhoneListCtrl($scope) {
+	// 	$scope.phones = [{
+	// 		"name": "Nexus S",
+	// 		"snippet": "Fast just got faster with Nexus S."
+	// 	}, {
+	// 		"name": "Motorola XOOM™ with Wi-Fi",
+	// 		"snippet": "The Next, Next Generation tablet."
+	// 	}, {
+	// 		"name": "MOTOROLA XOOM™",
+	// 		"snippet": "The Next, Next Generation tablet."
+	// 	}];
+	// }
+	angular.module("app",[]).controller('PhoneListCtrl', function($scope) {
+		$scope.phones = [{
+			"name": "Nexus S",
+			"snippet": "Fast just got faster with Nexus S."
+		}, {
+			"name": "Motorola XOOM™ with Wi-Fi",
+			"snippet": "The Next, Next Generation tablet."
+		}, {
+			"name": "MOTOROLA XOOM™",
+			"snippet": "The Next, Next Generation tablet."
+		}];
+	});
 	window.confirmModal = function(msg, cb_cancel, cb_ok) {
 		$('#confirmModal').modal('show');
 		$("#confirmModal").children().eq(1).css("top", "200px");

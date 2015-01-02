@@ -1,10 +1,26 @@
 nav .container {
   color: white;
 }
+/*
+top & bottom
+ */
+.navbar_top {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  margin: 0px auto;
+}
+.navbar_bottom {
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  margin: 0px auto;
+}
 /* log_in or sign_up */
-.absolute_position{
-  position: absolute !important;
-  right: 2px !important;
+.absolute_position {
+  position: absolute;
+  right: 2px;
 }
 .lay_out_search {
   height: 50px;

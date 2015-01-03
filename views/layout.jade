@@ -14,22 +14,144 @@ html
     link(href='/assets/bs3/css/bootstrap.min.css', rel='stylesheet', type='text/css')
     link(href='/assets/fa4/css/font-awesome.min.css', rel='stylesheet', type='text/css')
     link(href='/assets/app.css', rel='stylesheet', type='text/css')
-  nav.navbar-top.navbar.navbar-inverse.navbar_top
-    .container
-      ul.nav.navbar-nav(style="width:100%")
-        li
-          h2(style="font-weight:bold;font-style:italic") CodeLife
-        ul.nav.navbar-nav.absolute_position
-          li
-            a(href="#") sign_up
-          li
-            a(href="#") log_in
-          //- li(style="margin-top:15px;")
-          //-   i#post_plus.fa.fa-plus(style="cursor:pointer")
       
   body
+    nav.navbar-top.navbar.navbar-inverse.navbar_top
+      .container
+        ul.nav.navbar-nav(style="width:100%")
+          li
+            h2(style="font-weight:bold;font-style:italic") CodeJS
+          ul.nav.navbar-nav(style="margin-left:100px")
+            li(class="dropdown") 
+              a(href="#" class="dropdown-toggle" data-toggle="dropdown") JavaScript
+                span(class="caret")
+              ul.nva_head_background(class="dropdown-menu" role="menu")
+                li 
+                  a js前沿
+                li 
+                  a js思想
+                li 
+                  a js资源
+                li 
+                  a js大牛
+                li 
+                  a js专家
+                li 
+                  a js科学家
+                li 
+                  a 前端架构
+
+            li(class="dropdown") 
+              a(href="#" class="dropdown-toggle" data-toggle="dropdown") NodeJs
+                span(class="caret")
+              ul.nva_head_background(class="dropdown-menu" role="menu")
+                li 
+                  a nodejs前沿
+                li 
+                  a nodejs思想
+                li 
+                  a nodejs资源
+                li 
+                  a nodejs大牛
+                li 
+                  a nodejs专家
+                li 
+                  a nodejs科学家
+            li(class="dropdown") 
+              a(href="#" class="dropdown-toggle" data-toggle="dropdown") FrontFrameWork
+                span(class="caret")
+              ul.nva_head_background(class="dropdown-menu" role="menu")
+                li 
+                  a {css} less
+                li 
+                  a {css} bootstrap
+                li 
+                  a {css} yui
+                li 
+                  a {html} jade
+                li 
+                  a {html} handlebar
+                li 
+                  a {html5} handlebar
+                li 
+                  a {js} backbonejs
+                li 
+                  a {js} angularjs
+                li 
+                  a {js} emberjs
+                li 
+                  a {js} knockoutjs
+                li 
+                  a {js} spinejs
+                li 
+                  a {js} batmanjs
+                li 
+                  a {js} jquery
+
+            li(class="dropdown") 
+              a(href="#" class="dropdown-toggle" data-toggle="dropdown") BackFrameWork
+                span(class="caret")
+              ul.nva_head_background(class="dropdown-menu" role="menu")
+                li 
+                  a expressjs
+                li 
+                  a sailsjs
+                li 
+                  a totaljs
+                li 
+                  a partialjs
+                li 
+                  a koajs
+                li 
+                  a locomotivejs
+                li 
+                  a flatironjs
+                li 
+                  a geddyjs
+                li 
+                  a express-io
+                li 
+                  a socket stream
+            li(class="dropdown") 
+              a(href="#" class="dropdown-toggle" data-toggle="dropdown") Tools
+                span(class="caret")
+              ul.nva_head_background(class="dropdown-menu" role="menu")
+                li 
+                  a asyncjs
+                li 
+                  a underscorejs
+                li 
+                  a lodash
+                li 
+                  a moment
+                li 
+                  a datatable
+                li 
+                  a highchart
+            li(class="dropdown") 
+              a(href="#" class="dropdown-toggle" data-toggle="dropdown") More...
+                span(class="caret")
+              ul.nva_head_background(class="dropdown-menu" role="menu")
+                li 
+                  a 社区
+            li
+          //- ul.nav.navbar-nav
+          //-   li
+          //-     input(type="search",placeholder="Search")
+          //-   //- button#add_chapter.btn.btn-default(type="button") 
+          //-   li
+          //-     i.fa.fa-search(style="cursor:pointer")
+
+
+          ul.nav.navbar-nav.absolute_position
+            li
+              a(href="#") sign_up
+            li
+              a(href="#") log_in
+            //- li(style="margin-top:15px;")
+            //-   i#post_plus.fa.fa-plus(style="cursor:pointer")
     block content
-    nav.navbar-bottom.navbar.navbar-inverse.navbar_bottom
+    nav.navbar.navbar-inverse.navbar_bottom
       .container
         ul.nav.navbar-nav(style="width:100%")
           li(style="width:33%")
@@ -70,7 +192,7 @@ html
           h4.modal_message.modal-title.text-center  消息主体
     
 
-  script(src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js" type="text/javascript")
+  //- script(src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js" type="text/javascript")
   script(src='/assets/jquery/jquery.min.js', type='text/javascript')
   script(src='/assets/bs3/js/bootstrap.min.js', type='text/javascript')
   script(src='/angularjs/angular.min.js', type='text/javascript')

@@ -4,3 +4,5 @@ CodeLife Project:
         架构：后端 express + mongodb + backbone(angularjs)
 	      前端 fontawesome4 + bootstrap3 + jquery + jade + less
      2.首页布局，数据库链接,博客发布。
+2015-01-02:
+     1.新增前端框架angularjs

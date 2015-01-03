@@ -1,9 +1,10 @@
 nav .container {
   color: white;
 }
-/*
-top & bottom
- */
+/* top & bottom */
+.nva_head_background {
+  background: orange;
+}
 .navbar_top {
   position: absolute;
   top: 0px;
@@ -21,6 +22,10 @@ top & bottom
 .absolute_position {
   position: absolute;
   right: 2px;
+}
+.absolute_position2 {
+  position: absolute;
+  right: 0px;
 }
 .lay_out_search {
   height: 50px;
@@ -49,4 +54,20 @@ top & bottom
 /* a tag style */
 .a_style {
   padding-left: 0px !important;
+}
+.img {
+  position: relative;
+  height: 150px;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f2f2f2;
+}
+.index_li {
+  position: relative;
+  float: left;
+  width: 280px;
+  height: 230px;
+  margin: 0 0 40px 20px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px #eee;
 }

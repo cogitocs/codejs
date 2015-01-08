@@ -111,8 +111,8 @@
 				password: $(".login #login_password").val()
 			}
 			console.log(obj);
-			$.post('/admin/login', obj, function(data) {
-				console.log(data);
+			$.post('/admin/login', obj,function(data){
+				alertModal("恭喜你，登陆成功！")
 			})
 		}).on('click', '#btn_regist', function(event) {
 			event.preventDefault();
@@ -130,7 +130,10 @@
 			// var is_true = $("#firstname").val() && $("#lastname").val() && $(".regist #password").val() && $(".regist #email").val()
 			if ($("#formRegist").valid()) {
 				$.post('/admin/regist', obj, function(data) {
-					console.log(data);
+					alert("登录成功")
+					console.log(data+'message');
+					// window.location = "/";
+					// window.location.reload();
 				})
 			}
 

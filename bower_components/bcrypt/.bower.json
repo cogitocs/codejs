@@ -1,0 +1,18 @@
+{
+  "name": "bcrypt",
+  "main": "./bcrypt.js",
+  "dependencies": {
+    "angular": ">=1.0.8"
+  },
+  "homepage": "https://github.com/PatrickHeneise/bcrypt",
+  "_release": "a34c32e094",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a34c32e094b5abda9c264335425aa81200bc9a5c"
+  },
+  "_source": "git://github.com/PatrickHeneise/bcrypt.git",
+  "_target": "*",
+  "_originalSource": "bcrypt",
+  "_direct": true
+}

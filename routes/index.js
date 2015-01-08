@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var PostAdd = require('../models/post').PostAdd;
 /* GET home page. */
+console.log(router+'message');
 router.get('/', function(req, res) {
 	var blog_list = ["汪峰跨年求婚的最新相关信息", "邓紫棋太空", "新闻图集：泰国清迈小姐选美大赛 性感泳装美腿林立_9张图片", "呼格父母获赔偿", "自拍是一种病", "第65回nhk红白歌会战"]
 

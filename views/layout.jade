@@ -202,6 +202,12 @@ html
               .row(style="margin-top:2px")
                 .col-xs-12
                    button#btn_login.btn.btn-primary.form-control(type="button",style="min-width:100px") JS登录
+              .row#login_ok_msg(style="margin-top:2px;display:none")
+                .col-xs-12
+                   h4(style="color:red")  恭喜您,登录成功
+              .row#login_err_msg(style="margin-top:2px;display:none")
+                .col-xs-12
+                   h4(style="color:red")  登录失败
       .container.login_background.regist(style="display:none")
         .modal-dialog.modal-sm(style="min-width:220px;text-align:center")
           .modal-content
@@ -226,6 +232,12 @@ html
               .row(style="margin-top:2px")
                 .col-xs-12
                    button#btn_regist.btn.btn-primary.form-control(type="button",style="min-width:100px") JS注册
+              .row#regist_ok_msg(style="margin-top:2px;display:none")
+                .col-xs-12
+                   h4(style="color:red")  恭喜您,注册成功
+              .row#regist_err_msg(style="margin-top:2px;display:none")
+                .col-xs-12
+                   h4(style="color:red")  注册失败
     
   #confirmModal.modal.bs-example-modal-sm(tabindex="-1",role="dialog",aria-labelledby="mySmallModalLabel",aria-hidden="true",style="min-width:220px;text-align:center")
     .modal-dialog.modal-sm

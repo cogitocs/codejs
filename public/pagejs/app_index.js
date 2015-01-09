@@ -110,9 +110,20 @@
 				username: $("#login_name").val(),
 				password: $(".login #login_password").val()
 			}
-			console.log(obj);
-			$.post('/admin/login', obj,function(data){
-				alertModal("恭喜你，登陆成功！")
+			$.post('/admin/login', obj, function(data) {
+				if (data.code == "OK") {
+					$("#login_ok_msg").show();
+					$("#login_err_msg").hide();
+
+				} else {
+					$("#login_ok_msg").show();
+					$("#login_err_msg").hide();
+
+				}
+				setTimeout(function() {
+					window.location.reload();
+				}, 3000);
+
 			})
 		}).on('click', '#btn_regist', function(event) {
 			event.preventDefault();
@@ -125,15 +136,20 @@
 				email: $(".regist #email").val()
 
 			}
-			console.log(obj);
-			console.log($("#formRegist").valid());
-			// var is_true = $("#firstname").val() && $("#lastname").val() && $(".regist #password").val() && $(".regist #email").val()
 			if ($("#formRegist").valid()) {
 				$.post('/admin/regist', obj, function(data) {
-					alert("登录成功")
-					console.log(data+'message');
-					// window.location = "/";
-					// window.location.reload();
+					if (data.code == "OK") {
+						$("#regist_ok_msg").show();
+						$("#regist_err_msg").hide();
+
+					} else {
+						$("#regist_ok_msg").hide();
+						$("#regist_err_msg").show();
+
+					}
+					setTimeout(function() {
+						window.location.reload();
+					}, 3000);
 				})
 			}
 
@@ -156,36 +172,36 @@
 		$scope.phones = [{
 			"name": "Nexus S",
 			"img": "/assets/imgs/book.jpg",
-			"href": "https://www.github.com/MYSHLIFE",
+			"href": "/admin/books/一线架构师实践指南.pdf",
 			"snippet": "Fast just got faster with Nexus S."
 		}, {
 			"name": "Motorola XOOM™ with Wi-Fi",
 			"img": "/assets/imgs/book1.jpg",
-			"href": "https://www.github.com/MYSHLIFE",
+			"href": "/admin/books/基于MVC的JavaScript Web富应用开发.pdf",
 
 			"snippet": "The Next, Next Generation tablet."
 		}, {
 			"name": "Motorola XOOM™ with Wi-Fi",
 			"img": "/assets/imgs/book2.jpg",
-			"href": "https://www.github.com/MYSHLIFE",
+			"href": "/admin/books/架构之美.pdf",
 
 			"snippet": "The Next, Next Generation tablet."
 		}, {
 			"name": "Nexus S",
 			"img": "/assets/imgs/book3.jpg",
-			"href": "https://www.github.com/MYSHLIFE",
+			"href": "/admin/books/架构实战——软件架构设计的过程.pdf",
 
 			"snippet": "Fast just got faster with Nexus S."
 		}, {
 			"name": "Motorola XOOM™ with Wi-Fi",
 			"img": "/assets/imgs/book4.jpg",
-			"href": "https://www.github.com/MYSHLIFE",
+			"href": "/admin/books/精通CSS.pdf",
 
 			"snippet": "The Next, Next Generation tablet."
 		}, {
 			"name": "Motorola XOOM™ with Wi-Fi",
 			"img": "/assets/imgs/book.jpg",
-			"href": "https://www.github.com/MYSHLIFE",
+			"href": "/admin/books/软件架构设计程序员向架构师转型必备.pdf",
 
 			"snippet": "The Next, Next Generation tablet."
 		}];

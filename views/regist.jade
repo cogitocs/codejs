@@ -1,0 +1,87 @@
+doctype html
+html
+
+  head
+    meta(charset='utf-8')
+    block title 
+    meta(content='width=device-width, initial-scale=1.0', name='viewport')
+    meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+    meta(content='description', name='Hello,Welcome to Ivan Home')
+    meta(content='Ivan Peng', name='Ivan.Peng')
+    link(rel='shortcut icon', href='/img/favicon.png')
+
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href='/assets/bs3/css/bootstrap.min.css', rel='stylesheet', type='text/css')
+    link(href='/assets/fa4/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='/assets/app.css', rel='stylesheet', type='text/css')
+      
+  body
+    .container.login_background
+      .modal-dialog.modal-sm(style="min-width:220px;text-align:center")
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+
+            .row#login
+              .col-xs-6
+                h4 注册账号 
+              .col-xs-6
+                a.btn.btn-primary.form-control(style="min-width:100px") 登录
+                  i.fa.fa-fw.fa-arrow-circle-right
+          .modal-header-login
+            .row#regist(style="display:none")
+              .col-xs-6
+                h4 账号登录 
+              .col-xs-6
+                a.btn.btn-primary.form-control(style="min-width:100px") 注册
+                  i.fa.fa-fw.fa-arrow-circle-right
+              
+            h4.modal_message.modal-title.text-center  注册/登录
+          .modal-body#regist_form 
+            .row
+              .col-xs-6
+                input.form-control(type="text",style="min-width:100px",placeholder="姓") 
+              .col-xs-6
+                input.form-control(type="text",style="min-width:100px",placeholder="名") 
+            .row(style="margin-top:2px")
+              .col-xs-12
+                 input.form-control(type="text",style="min-width:100px",placeholder="邮箱") 
+            .row(style="margin-top:2px")
+              .col-xs-12
+                 input.form-control(type="text",style="min-width:100px",placeholder="密码") 
+            .row(style="margin-top:2px")
+              .col-xs-12
+                 button.btn.btn-primary.form-control(type="button",style="min-width:100px") JS注册
+          .modal-body#login_form 
+            .row(style="margin-top:2px")
+              .col-xs-12
+                 input.form-control(type="text",style="min-width:100px",placeholder="邮箱") 
+            .row(style="margin-top:2px")
+              .col-xs-12
+                 input.form-control(type="text",style="min-width:100px",placeholder="密码") 
+            .row(style="margin-top:2px")
+              .col-xs-12
+                 button.btn.btn-primary.form-control(type="button",style="min-width:100px") JS登录
+  #confirmModal.modal.bs-example-modal-sm(tabindex="-1",role="dialog",aria-labelledby="mySmallModalLabel",aria-hidden="true",style="min-width:220px;text-align:center")
+    .modal-dialog.modal-sm
+      .modal-content
+        .modal-header
+          h4.modal_message.modal-title.text-center  消息头部
+        .modal-body  
+          .row
+            .col-xs-6
+              button#btn_cancel.btn.btn-primary.text-center(type="button",style="min-width:100px") 取消
+            .col-xs-6
+              button#btn_ok.btn.btn-primary.text-center(type="button",style="min-width:100px") 确认
+  #alertModal.modal.bs-example-modal-sm(tabindex="-1",role="dialog",aria-labelledby="mySmallModalLabel",aria-hidden="true",style="min-width:220px;text-align:center")
+    .modal-dialog.modal-sm
+      .modal-content
+        .modal-body  
+          h4.modal_message.modal-title.text-center  消息主体
+    
+
+  //- script(src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js" type="text/javascript")
+  script(src='/assets/jquery/jquery.min.js', type='text/javascript')
+  script(src='/assets/bs3/js/bootstrap.min.js', type='text/javascript')
+  script(src='/angularjs/angular.min.js', type='text/javascript')
+  block page_script

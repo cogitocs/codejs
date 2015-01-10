@@ -154,6 +154,13 @@
 			}
 
 		})
+		// .on('click', '.pagination a', function(event) { //分页处理（任务）
+  //           event.preventDefault();
+  //           var $this = $(this);
+  //           var page = parseInt($this.data('page'));
+  //           // cts_lv.cur_page = page;
+  //           // cts_lv.render();
+  //       })
 		//-弹出消息框
 	$("[data-toggle='popover']").each(function(i) {
 		var cfg = {
@@ -170,41 +177,59 @@
 	//angular operator
 	angular.module("app", []).controller('PhoneListCtrl', function($scope) {
 		$scope.phones = [{
-			"name": "Nexus S",
+			"name": "一线架构师实践指南",
 			"img": "/assets/imgs/book.jpg",
 			"href": "/admin/books/一线架构师实践指南.pdf",
-			"snippet": "Fast just got faster with Nexus S."
+			"snippet": "一线架构师实践指南."
 		}, {
-			"name": "Motorola XOOM™ with Wi-Fi",
+			"name": "基于MVC的JavaScript Web富应用开发",
 			"img": "/assets/imgs/book1.jpg",
 			"href": "/admin/books/基于MVC的JavaScript Web富应用开发.pdf",
 
-			"snippet": "The Next, Next Generation tablet."
+			"snippet": "基于MVC的JavaScript Web富应用开发."
 		}, {
-			"name": "Motorola XOOM™ with Wi-Fi",
+			"name": "架构之美",
 			"img": "/assets/imgs/book2.jpg",
 			"href": "/admin/books/架构之美.pdf",
 
-			"snippet": "The Next, Next Generation tablet."
+			"snippet": "架构之美."
 		}, {
-			"name": "Nexus S",
+			"name": "架构实战——软件架构设计的过程",
 			"img": "/assets/imgs/book3.jpg",
 			"href": "/admin/books/架构实战——软件架构设计的过程.pdf",
 
-			"snippet": "Fast just got faster with Nexus S."
+			"snippet": "架构实战——软件架构设计的过程."
 		}, {
-			"name": "Motorola XOOM™ with Wi-Fi",
+			"name": "精通CSS",
 			"img": "/assets/imgs/book4.jpg",
 			"href": "/admin/books/精通CSS.pdf",
 
-			"snippet": "The Next, Next Generation tablet."
+			"snippet": "精通CSS."
 		}, {
-			"name": "Motorola XOOM™ with Wi-Fi",
+			"name": "软件架构设计程序员向架构师转型必备",
 			"img": "/assets/imgs/book.jpg",
 			"href": "/admin/books/软件架构设计程序员向架构师转型必备.pdf",
 
-			"snippet": "The Next, Next Generation tablet."
+			"snippet": "软件架构设计程序员向架构师转型必备."
 		}];
+		$scope.next_page = function(){
+			console.log($scope.page);
+			// console.log($(this).page);
+			// console.log($(this).data("page"));
+			// return 
+		}
+		// //计算分页
+		// $scope.pages = _.range($scope.phones.length / 4);
+		// // $scope.page_size = self.page_size;
+		// // $scope.page_sizes = [25, 50, 100, 200];
+		// $scope.first_page = ($scope.cur_page == 0);
+		// $scope.last_page = ($scope.cur_page == $scope.pages.length - 1);
+		// $scope.cur_page = $scope.cur_page;
+		// $scope.prev_page = $scope.cur_page - 1;
+		// $scope.next_page = $scope.cur_page + 1;
+		// //截取数据
+		// $scope.phones = $scope.phones.slice($scope.cur_page * $scope.page_size, ($scope.cur_page + 1) * 4)
+
 	});
 	//下拉加载刷新
 	var range = 50; //距下边界长度/单位px  

@@ -11,19 +11,19 @@ block content
     .row(style="min-height:500px",ng-controller="PhoneListCtrl")
       .col-sm-8
         ul.nav.nav-sidebar(style="margin-top:30px",ng-init="ddd=[1,2,34,4]")
-          li.index_li.col-md-4(placement="top",ng-repeat="phone in phones",data-toggle="popover",data-original-title="中国近代史",data-content="<header>[美] 徐中约 / 世界图书出版公司</header>《中国近代史》自1970年面世后五次")
+          li.index_li.col-md-4(placement="top",ng-repeat="phone in phones",data-toggle="popover",data-original-title="架构师",data-content="架构师必备书籍")
             .img
               img.img(src="{{phone.img}}") 
             a(href="{{phone.href}}",target="_blank") {{phone.name}}
-        nav
+        nav.text-center
           ul.pagination
             li
-              a(href="#") &laquo;
-              a(href="#") 1
-              a(href="#") 2
-              a(href="#") 3
-              a(href="#") 4
-              a(href="#") &raquo;
+              a(href="#",ng-init="page=0",ng-click="next_page()") &laquo;
+              a(href="#",ng-init="page1=1",ng-click="next_page()") {{page}}
+              a(href="#",ng-init="page2=2",ng-click="next_page()") {{page}}
+              a(href="#",ng-init="page3=3",ng-click="next_page()") {{page}}
+              a(href="#",ng-init="page4=4",ng-click="next_page()") {{page}}
+              a(href="#",ng-init="page5=5",ng-click="next_page()") &raquo;
 
       .col-sm-4
 

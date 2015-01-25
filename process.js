@@ -17,3 +17,13 @@ CodeLife Project:
      1.注册、登录功能完善
      2.博客发表功能
      3.人员资料完善
+2015-01-25
+     1.添加jquery comment /research jquery source code
+     2.install backbone
+2015-01-26 ~ 2015-01-31
+     1.research jquery source code
+     2.延迟的博客发表功能及人员资料更改。
+     3.将学到的前端技能渐渐用到项目中来。实践才能出真知。
+     4.the important is to learning theory & act it.
+
+

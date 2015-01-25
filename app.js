@@ -60,8 +60,8 @@ app.use(express.static(path.join(__dirname, 'bower_components')));
 // mongodb_uri = 'mongodb://localhost/ivan?poolSize=5';
 
 if (app.get('env') === 'development') {
-    // mongodb_uri = 'mongodb://localhost/ivan?poolSize=5';
-    mongodb_uri = 'mongodb://ivan:74717@localhost:29918/codejs?poolSize=5';
+    mongodb_uri = 'mongodb://localhost/ivan?poolSize=5';
+    // mongodb_uri = 'mongodb://ivan:74717@localhost:29918/codejs?poolSize=5';
 
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);

@@ -13,7 +13,6 @@
  */
 
 (function( global, factory ) {
-
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
 		// For CommonJS and CommonJS-like environments where a proper `window`
 		// is present, execute the factory and get jQuery.
@@ -44,7 +43,6 @@
 //
 
 var arr = [];
-
 var slice = arr.slice;
 
 var concat = arr.concat;
@@ -66,7 +64,6 @@ var support = {};
 var
 	// Use the correct document accordingly with window argument (sandbox)
 	document = window.document,
-
 	version = "2.1.3",
 
 	// Define a local copy of jQuery
@@ -173,20 +170,20 @@ jQuery.fn = jQuery.prototype = {
 	sort: arr.sort,
 	splice: arr.splice
 };
-
 jQuery.extend = jQuery.fn.extend = function() {
 	var options, name, src, copy, copyIsArray, clone,
 		target = arguments[0] || {},
 		i = 1,
 		length = arguments.length,
 		deep = false;
-
+// console.log(arguments);
 	// Handle a deep copy situation
 	if ( typeof target === "boolean" ) {
 		deep = target;
 
 		// Skip the boolean and the target
 		target = arguments[ i ] || {};
+		// console.log(target);
 		i++;
 	}
 
@@ -238,7 +235,6 @@ jQuery.extend = jQuery.fn.extend = function() {
 	// Return the modified object
 	return target;
 };
-
 jQuery.extend({
 	// Unique for each copy of jQuery on the page
 	expando: "jQuery" + ( version + Math.random() ).replace( /\D/g, "" ),
@@ -5033,7 +5029,7 @@ function fixInput( src, dest ) {
 		dest.defaultValue = src.defaultValue;
 	}
 }
-
+//克隆操作
 jQuery.extend({
 	clone: function( elem, dataAndEvents, deepDataAndEvents ) {
 		var i, l, srcElements, destElements,
@@ -5195,7 +5191,12 @@ jQuery.extend({
 		}
 	}
 });
-
+//text
+//append
+//preappend
+//before
+//after
+//remove
 jQuery.fn.extend({
 	text: function( value ) {
 		return access( this, function( value ) {
@@ -5271,7 +5272,7 @@ jQuery.fn.extend({
 		for ( ; (elem = this[i]) != null; i++ ) {
 			if ( elem.nodeType === 1 ) {
 
-				// Prevent memory leaks
+				// Prevent memory leaks  清理数据，防止内存泄露。
 				jQuery.cleanData( getAll( elem, false ) );
 
 				// Remove any remaining nodes
@@ -5302,6 +5303,10 @@ jQuery.fn.extend({
 			}
 
 			// See if we can take a shortcut and just use innerHTML
+			// r开头的一般为正则表达式
+			// jquery 充斥着各种各样的正则表达式和闭包、原型链、继承。
+			// 1月份将所有的时间贡献给jquery
+			// 
 			if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
 				!wrapMap[ ( rtagName.exec( value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
 
@@ -6324,7 +6329,7 @@ function createFxNow() {
 	});
 	return ( fxNow = jQuery.now() );
 }
-
+//生成新标准动画的参数
 // Generate parameters to create a standard animation
 function genFx( type, includeWidth ) {
 	var which,
@@ -6359,7 +6364,7 @@ function createTween( value, prop, animation ) {
 		}
 	}
 }
-
+//默认前置过滤器
 function defaultPrefilter( elem, props, opts ) {
 	/* jshint validthis: true */
 	var prop, value, toggle, tween, hooks, oldfire, display, checkDisplay,
@@ -6371,7 +6376,7 @@ function defaultPrefilter( elem, props, opts ) {
 
 	// Handle queue: false promises
 	if ( !opts.queue ) {
-		hooks = jQuery._queueHooks( elem, "fx" );
+		hooks = jQuery._queueHooks( elem, "fx" );//what is _queueHooks???
 		if ( hooks.unqueued == null ) {
 			hooks.unqueued = 0;
 			oldfire = hooks.empty.fire;
@@ -6383,7 +6388,7 @@ function defaultPrefilter( elem, props, opts ) {
 		}
 		hooks.unqueued++;
 
-		anim.always(function() {
+		anim.always(function() {//递归调用anim
 			// Ensure the complete handler is called before this completes
 			anim.always(function() {
 				hooks.unqueued--;
@@ -6396,7 +6401,7 @@ function defaultPrefilter( elem, props, opts ) {
 
 	// Height/width overflow pass
 	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
-		// Make sure that nothing sneaks out
+		// Make sure that nothing sneaks out 确保没有什么东西泄露
 		// Record all 3 overflow attributes because IE9-10 do not
 		// change the overflow attribute when overflowX and
 		// overflowY are set to the same value
@@ -6492,7 +6497,7 @@ function defaultPrefilter( elem, props, opts ) {
 		style.display = display;
 	}
 }
-
+//属性过滤器
 function propFilter( props, specialEasing ) {
 	var index, name, easing, value, hooks;
 
@@ -6824,7 +6829,7 @@ jQuery.each([ "toggle", "show", "hide" ], function( i, name ) {
 			this.animate( genFx( name, true ), speed, easing, callback );
 	};
 });
-
+//常用动画的快捷方式
 // Generate shortcuts for custom animations
 jQuery.each({
 	slideDown: genFx("show"),
@@ -6905,7 +6910,7 @@ jQuery.fn.delay = function( time, type ) {
 	});
 };
 
-
+//input.select  设置默认值
 (function() {
 	var input = document.createElement( "input" ),
 		select = document.createElement( "select" ),
@@ -6934,7 +6939,7 @@ jQuery.fn.delay = function( time, type ) {
 	support.radioValue = input.value === "t";
 })();
 
-
+//节点钩子，布尔值钩子
 var nodeHook, boolHook,
 	attrHandle = jQuery.expr.attrHandle;
 
@@ -6949,7 +6954,8 @@ jQuery.fn.extend({
 		});
 	}
 });
-
+//属性操作方法  attr & removeAttr
+//attrHooks 属性钩子
 jQuery.extend({
 	attr: function( elem, name, value ) {
 		var hooks, ret,
@@ -7037,6 +7043,7 @@ jQuery.extend({
 });
 
 // Hooks for boolean attributes
+// 布尔属性钩子
 boolHook = {
 	set: function( elem, value, name ) {
 		if ( value === false ) {
@@ -7055,6 +7062,7 @@ jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) 
 		var ret, handle;
 		if ( !isXML ) {
 			// Avoid an infinite loop by temporarily removing this function from the getter
+			// 从getter中临时移除这个函数避免死循环。
 			handle = attrHandle[ name ];
 			attrHandle[ name ] = ret;
 			ret = getter( elem, name, isXML ) != null ?
@@ -7070,7 +7078,7 @@ jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) 
 
 
 var rfocusable = /^(?:input|select|textarea|button)$/i;
-
+//属性和移除属性操作
 jQuery.fn.extend({
 	prop: function( name, value ) {
 		return access( this, jQuery.prop, name, value, arguments.length > 1 );
@@ -7082,7 +7090,7 @@ jQuery.fn.extend({
 		});
 	}
 });
-
+//propFix  prop propHooks  属性钩子
 jQuery.extend({
 	propFix: {
 		"for": "htmlFor",
@@ -7312,7 +7320,7 @@ jQuery.fn.extend({
 
 
 var rreturn = /\r/g;
-
+//val 方法
 jQuery.fn.extend({
 	val: function( value ) {
 		var hooks, ret, isFunction,
@@ -7339,28 +7347,33 @@ jQuery.fn.extend({
 		}
 
 		isFunction = jQuery.isFunction( value );
+		/*
+		value    1.是否有值
+		2.是否是函数
+		3.遍历当前上下文
+		 */
 
 		return this.each(function( i ) {
 			var val;
 
-			if ( this.nodeType !== 1 ) {
+			if ( this.nodeType !== 1 ) {//不是元素节点
 				return;
 			}
 
 			if ( isFunction ) {
-				val = value.call( this, i, jQuery( this ).val() );
+				val = value.call( this, i, jQuery( this ).val() );//是函数，则调用该函数方法
 			} else {
 				val = value;
 			}
 
-			// Treat null/undefined as ""; convert numbers to string
+			// Treat null/undefined as ""; convert numbers to string  将null/undefined视为“”，将数字转换为字符串。
 			if ( val == null ) {
 				val = "";
 
 			} else if ( typeof val === "number" ) {
 				val += "";
 
-			} else if ( jQuery.isArray( val ) ) {
+			} else if ( jQuery.isArray( val ) ) {//判断是否为数组
 				val = jQuery.map( val, function( value ) {
 					return value == null ? "" : value + "";
 				});
@@ -7375,7 +7388,7 @@ jQuery.fn.extend({
 		});
 	}
 });
-
+//属性值钩子
 jQuery.extend({
 	valHooks: {
 		option: {
@@ -7440,6 +7453,8 @@ jQuery.extend({
 				}
 
 				// Force browsers to behave consistently when non-matching value is set
+				// 当设置了不匹配的值时强制浏览器表现持续。
+				// 
 				if ( !optionSet ) {
 					elem.selectedIndex = -1;
 				}
@@ -7480,9 +7495,11 @@ jQuery.each( ("blur focus focusin focusout load resize scroll unload click dblcl
 		return arguments.length > 0 ?
 			this.on( name, null, data, fn ) :
 			this.trigger( name );
+			//直接绑定事件的写法：在这里用了on来监听绑定事件。
 	};
 });
 
+//绑定、解绑   －－－代理事件
 jQuery.fn.extend({
 	hover: function( fnOver, fnOut ) {
 		return this.mouseenter( fnOver ).mouseleave( fnOut || fnOver );
@@ -7506,19 +7523,21 @@ jQuery.fn.extend({
 
 
 var nonce = jQuery.now();
-
+console.log(nonce);
 var rquery = (/\?/);
 
 
 
 // Support: Android 2.3
 // Workaround failure to string-cast null input
+// JSON解析
 jQuery.parseJSON = function( data ) {
 	return JSON.parse( data + "" );
 };
 
 
 // Cross-browser xml parsing
+// xml跨浏览器解析
 jQuery.parseXML = function( data ) {
 	var xml, tmp;
 	if ( !data || typeof data !== "string" ) {
@@ -7527,7 +7546,7 @@ jQuery.parseXML = function( data ) {
 
 	// Support: IE9
 	try {
-		tmp = new DOMParser();
+		tmp = new DOMParser();//dom parser
 		xml = tmp.parseFromString( data, "text/xml" );
 	} catch ( e ) {
 		xml = undefined;
@@ -7539,7 +7558,7 @@ jQuery.parseXML = function( data ) {
 	return xml;
 };
 
-
+//正则表达式
 var
 	rhash = /#.*$/,
 	rts = /([?&])_=[^&]*/,
@@ -7576,7 +7595,7 @@ var
 
 	// Segment location into parts
 	ajaxLocParts = rurl.exec( ajaxLocation.toLowerCase() ) || [];
-
+//前置过滤器和请求分发器
 // Base "constructor" for jQuery.ajaxPrefilter and jQuery.ajaxTransport
 function addToPrefiltersOrTransports( structure ) {
 
@@ -7608,10 +7627,13 @@ function addToPrefiltersOrTransports( structure ) {
 		}
 	};
 }
-
+//前置过滤器和请求分发器的基本检查函数
 // Base inspection function for prefilters and transports
 function inspectPrefiltersOrTransports( structure, options, originalOptions, jqXHR ) {
-
+console.log(structure);
+console.log(options);
+console.log(originalOptions);
+console.log(jqXHR);
 	var inspected = {},
 		seekingTransport = ( structure === transports );
 
@@ -7633,7 +7655,7 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
 
 	return inspect( options.dataTypes[ 0 ] ) || !inspected[ "*" ] && inspect( "*" );
 }
-
+//ajax 选项的特殊扩展
 // A special extend for ajax options
 // that takes "flat" options (not to be deep extended)
 // Fixes #9887
@@ -7652,7 +7674,7 @@ function ajaxExtend( target, src ) {
 
 	return target;
 }
-
+//响应ajax请求。
 /* Handles responses to an ajax request:
  * - finds the right dataType (mediates between content-type and expected dataType)
  * - returns the corresponding response
@@ -7662,7 +7684,8 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 	var ct, type, finalDataType, firstDataType,
 		contents = s.contents,
 		dataTypes = s.dataTypes;
-
+//ct :响应头 content-type
+//
 	// Remove auto dataType and get content-type in the process
 	while ( dataTypes[ 0 ] === "*" ) {
 		dataTypes.shift();
@@ -7709,7 +7732,8 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 		return responses[ finalDataType ];
 	}
 }
-
+//对请求和响应进行链转换
+//
 /* Chain conversions given the request and the original response
  * Also sets the responseXXX fields on the jqXHR instance
  */
@@ -7896,7 +7920,7 @@ jQuery.extend({
 	ajaxPrefilter: addToPrefiltersOrTransports( prefilters ),
 	ajaxTransport: addToPrefiltersOrTransports( transports ),
 
-	// Main method
+	// Main method   ajax 方法
 	ajax: function( url, options ) {
 
 		// If url is an object, simulate pre-1.5 signature
@@ -7905,28 +7929,29 @@ jQuery.extend({
 			url = undefined;
 		}
 
-		// Force options to be an object
+		// Force options to be an object  
 		options = options || {};
 
 		var transport,
-			// URL without anti-cache param
+			// URL without anti-cache param //没有缓存参数的url
 			cacheURL,
-			// Response headers
+			// Response headers 响应头
 			responseHeadersString,
 			responseHeaders,
-			// timeout handle
+			// timeout handle  超时处理器
 			timeoutTimer,
-			// Cross-domain detection vars
+			// Cross-domain detection vars 跨域检测变量
 			parts,
-			// To know if global events are to be dispatched
+			// To know if global events are to be dispatched  判断全局事件是否分发
 			fireGlobals,
-			// Loop variable
+			// Loop variable //循环变量
 			i,
-			// Create the final options object
+			// Create the final options object 
 			s = jQuery.ajaxSetup( {}, options ),
 			// Callbacks context
 			callbackContext = s.context || s,
 			// Context for global events is callbackContext if it is a DOM node or jQuery collection
+			// 上下文和全局变量如果是文档节点或者jquery 集合  则是回调上下文。
 			globalEventContext = s.context && ( callbackContext.nodeType || callbackContext.jquery ) ?
 				jQuery( callbackContext ) :
 				jQuery.event,
@@ -7966,7 +7991,7 @@ jQuery.extend({
 					return state === 2 ? responseHeadersString : null;
 				},
 
-				// Caches the header
+				// Caches the header    缓存头部
 				setRequestHeader: function( name, value ) {
 					var lname = name.toLowerCase();
 					if ( !state ) {
@@ -7976,7 +8001,7 @@ jQuery.extend({
 					return this;
 				},
 
-				// Overrides response content-type header
+				// Overrides response content-type header 重载响应头
 				overrideMimeType: function( type ) {
 					if ( !state ) {
 						s.mimeType = type;
@@ -7984,7 +8009,7 @@ jQuery.extend({
 					return this;
 				},
 
-				// Status-dependent callbacks
+				// Status-dependent callbacks 
 				statusCode: function( map ) {
 					var code;
 					if ( map ) {
@@ -8001,7 +8026,7 @@ jQuery.extend({
 					return this;
 				},
 
-				// Cancel the request
+				// Cancel the request  取消请求
 				abort: function( statusText ) {
 					var finalText = statusText || strAbort;
 					if ( transport ) {
@@ -8027,9 +8052,9 @@ jQuery.extend({
 		// Alias method option to type as per ticket #12004
 		s.type = options.method || options.type || s.method || s.type;
 
-		// Extract dataTypes list
+		// Extract dataTypes list  抽取数据类型列表
 		s.dataTypes = jQuery.trim( s.dataType || "*" ).toLowerCase().match( rnotwhite ) || [ "" ];
-
+        //跨域请求  有一个协议：主机：端口不匹配
 		// A cross-domain request is in order when we have a protocol:host:port mismatch
 		if ( s.crossDomain == null ) {
 			parts = rurl.exec( s.url.toLowerCase() );
@@ -8040,12 +8065,12 @@ jQuery.extend({
 			);
 		}
 
-		// Convert data if not already a string
+		// Convert data if not already a string   数据转换
 		if ( s.data && s.processData && typeof s.data !== "string" ) {
 			s.data = jQuery.param( s.data, s.traditional );
 		}
 
-		// Apply prefilters
+		// Apply prefilters  //应用前置过滤器
 		inspectPrefiltersOrTransports( prefilters, s, options, jqXHR );
 
 		// If request was aborted inside a prefilter, stop there
@@ -8072,7 +8097,7 @@ jQuery.extend({
 		// and/or If-None-Match header later on
 		cacheURL = s.url;
 
-		// More options handling for requests with no content
+		// More options handling for requests with no content   更多无内容请求 选项处理
 		if ( !s.hasContent ) {
 
 			// If data is available, append data to url
@@ -8170,12 +8195,12 @@ jQuery.extend({
 			}
 		}
 
-		// Callback for when everything is done
+		// Callback for when everything is done   当事情都完了的时候回调
 		function done( status, nativeStatusText, responses, headers ) {
 			var isSuccess, success, error, response, modified,
 				statusText = nativeStatusText;
 
-			// Called once
+			// Called once  回调一次
 			if ( state === 2 ) {
 				return;
 			}
@@ -8183,7 +8208,7 @@ jQuery.extend({
 			// State is "done" now
 			state = 2;
 
-			// Clear timeout if it exists
+			// Clear timeout if it exists  如果有定时器，干掉它。
 			if ( timeoutTimer ) {
 				clearTimeout( timeoutTimer );
 			}
@@ -8201,7 +8226,7 @@ jQuery.extend({
 			// Determine if successful
 			isSuccess = status >= 200 && status < 300 || status === 304;
 
-			// Get response data
+			// Get response data   
 			if ( responses ) {
 				response = ajaxHandleResponses( s, jqXHR, responses );
 			}
@@ -8296,7 +8321,7 @@ jQuery.extend({
 
 jQuery.each( [ "get", "post" ], function( i, method ) {
 	jQuery[ method ] = function( url, data, callback, type ) {
-		// Shift arguments if data argument was omitted
+		// Shift arguments if data argument was omitted   
 		if ( jQuery.isFunction( data ) ) {
 			type = type || callback;
 			callback = data;
@@ -8410,10 +8435,10 @@ jQuery.expr.filters.visible = function( elem ) {
 
 
 var r20 = /%20/g,
-	rbracket = /\[\]$/,
-	rCRLF = /\r?\n/g,
-	rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i,
-	rsubmittable = /^(?:input|select|textarea|keygen)/i;
+	rbracket = /\[\]$/,//中括号
+	rCRLF = /\r?\n/g,//换行
+	rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i, //提交类型
+	rsubmittable = /^(?:input|select|textarea|keygen)/i;//能够提交的
 
 function buildParams( prefix, obj, traditional, add ) {
 	var name;
@@ -8443,7 +8468,7 @@ function buildParams( prefix, obj, traditional, add ) {
 	}
 }
 
-// Serialize an array of form elements or a set of
+// Serialize an array of form elements or a set of   序列化表单元素数组或者 键值对查询字符串。
 // key/values into a query string
 jQuery.param = function( a, traditional ) {
 	var prefix,
@@ -8479,7 +8504,7 @@ jQuery.param = function( a, traditional ) {
 };
 
 jQuery.fn.extend({
-	serialize: function() {
+	serialize: function() {  //参数序列化
 		return jQuery.param( this.serializeArray() );
 	},
 	serializeArray: function() {
@@ -8531,7 +8556,7 @@ var xhrId = 0,
 // Support: IE9
 // Open requests must be manually aborted on unload (#5280)
 // See https://support.microsoft.com/kb/2856746 for more info
-if ( window.attachEvent ) {
+if ( window.attachEvent ) {//ie 事件监听
 	window.attachEvent( "onunload", function() {
 		for ( var key in xhrCallbacks ) {
 			xhrCallbacks[ key ]();
@@ -8659,7 +8684,7 @@ jQuery.ajaxSetup({
 	}
 });
 
-// Handle cache's special case and crossDomain
+// Handle cache's special case and crossDomain   处理缓存的特殊例子 &跨域
 jQuery.ajaxPrefilter( "script", function( s ) {
 	if ( s.cache === undefined ) {
 		s.cache = false;
@@ -9097,6 +9122,7 @@ jQuery.each( [ "top", "left" ], function( i, prop ) {
 
 
 // Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
+// 创建内边距高度、内边距宽度、外边矩高宽方法
 jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 	jQuery.each( { padding: "inner" + name, content: type, "": "outer" + name }, function( defaultExtra, funcName ) {
 		// Margin is only for outerHeight, outerWidth
@@ -9140,6 +9166,8 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 
 
 // The number of elements contained in the matched element set
+// 包含匹配元素的集
+// 
 jQuery.fn.size = function() {
 	return this.length;
 };

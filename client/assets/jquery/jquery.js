@@ -3218,7 +3218,7 @@ jQuery.Callbacks = function( options ) {
 	return self;
 };
 
-
+//deferred & when
 jQuery.extend({
 
 	Deferred: function( func ) {
@@ -3456,6 +3456,8 @@ jQuery.ready.promise();
 
 // Multifunctional method to get and set values of a collection
 // The value/s can optionally be executed if it's a function
+// 多个设置集合值的方法
+// 函数值可选执行
 var access = jQuery.access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 	var i = 0,
 		len = elems.length,

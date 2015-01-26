@@ -1,4 +1,8 @@
 CodeLife Project:
+/*
+@aliyun 主机到期日：2015.5月中旬
+@新网互联  codejs.net codethink.cn 到期日:2015.5月中旬。
+ */
 2015-01-01: 
      1.项目创建(选型)
         架构：后端 express + mongodb + backbone(angularjs)
@@ -20,6 +24,13 @@ CodeLife Project:
 2015-01-25
      1.添加jquery comment /research jquery source code
      2.install backbone
+     //@from now on, commit code every day. the first 30 days,must insist it & become a habit.
+     //@methods:   1.set a clock
+     //@           2.write something.
+     //@           3.think something.
+     //@           4.do it as a habit like eat shower breethbrush & make love.
+     //@           5.welcome self to codelife.
+     //@           6.view github as a new toy,a taidi,a friend,a lover.
 2015-01-26 ~ 2015-01-31
      1.research jquery source code
      2.延迟的博客发表功能及人员资料更改。

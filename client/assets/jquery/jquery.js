@@ -3262,11 +3262,13 @@
 					return this;
 				},
 				// Call all the callbacks with the given arguments
+				// 调用已给参数的所有回调。
 				fire: function() {
 					self.fireWith(this, arguments);
 					return this;
 				},
 				// To know if the callbacks have already been called at least once
+				// 是否已经被调用标志。
 				fired: function() {
 					return !!fired;
 				}
@@ -3276,6 +3278,7 @@
 	};
 
 	//deferred & when
+	//推迟
 	jQuery.extend({
 
 		Deferred: function(func) {
@@ -3366,6 +3369,7 @@
 
 		// Deferred helper
 		when: function(subordinate /* , ..., subordinateN */ ) {
+			console.log(subordinate);
 			var i = 0,
 				resolveValues = slice.call(arguments),
 				length = resolveValues.length,
@@ -3421,7 +3425,7 @@
 	// The deferred used on DOM ready
 	var readyList;
 
-	jQuery.fn.ready = function(fn) {
+	jQuery.fn.ready = function(fn) {//$(document).ready(fn)
 		// Add the callback
 		jQuery.ready.promise().done(fn);
 
@@ -3434,6 +3438,7 @@
 
 		// A counter to track how many items to wait for before
 		// the ready event fires. See #6781
+		// 统计前面有多少个排队的。
 		readyWait: 1,
 
 		// Hold (or release) the ready event
@@ -3462,9 +3467,11 @@
 			}
 
 			// If there are functions bound, to execute
+			// 执行绑定了的函数
 			readyList.resolveWith(document, [jQuery]);
 
 			// Trigger any bound ready events
+			// 触发绑定了的预备事件
 			if (jQuery.fn.triggerHandler) {
 				jQuery(document).triggerHandler("ready");
 				jQuery(document).off("ready");
@@ -3506,6 +3513,7 @@
 	};
 
 	// Kick off the DOM ready check even if the user does not
+	// 即使用户没用也做dom ready检查
 	jQuery.ready.promise();
 
 
@@ -3568,6 +3576,7 @@
 
 	/**
 	 * Determines whether an object can have data
+	 * 决定一个对象是否可以拥有数据
 	 */
 	jQuery.acceptData = function(owner) {
 		// Accepts only:
@@ -4130,6 +4139,7 @@
 
 	/*
 	 * Helper functions for managing events -- not part of the public interface.
+	 * 管理事件的辅助函数－非公共接口
 	 * Props to Dean Edwards' addEvent library for many of the ideas.
 	 */
 	jQuery.event = {
@@ -6399,6 +6409,7 @@
 		};
 
 	// Animations created synchronously will run synchronously
+	// 同步创建、同步运行。
 	function createFxNow() {
 			setTimeout(function() {
 				fxNow = undefined;

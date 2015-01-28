@@ -5681,6 +5681,7 @@
 
 	function addGetHookIf(conditionFn, hookFn) {
 		// Define the hook, we'll check on the first run if it's really needed.
+		// 定义钩子，我们可以检查是否已经运行了我们需要的。
 		return {
 			get: function() {
 				if (conditionFn()) {
@@ -5738,6 +5739,7 @@
 
 		// Support: node.js jsdom
 		// Don't assume that getComputedStyle is a property of the global object
+		// 不要认为getComputedStyle 是全局对象属性
 		if (window.getComputedStyle) {
 			jQuery.extend(support, {
 				pixelPosition: function() {
@@ -5787,6 +5789,7 @@
 
 
 	// A method for quickly swapping in/out CSS properties to get correct calculations.
+	// 通过迅速交换输入输出的样式属性得到正确的计算值。
 	jQuery.swap = function(elem, options, callback, args) {
 		var ret, name,
 			old = {};
@@ -6072,6 +6075,7 @@
 
 				// Support: IE9-11+
 				// background-* props affect original clone's values
+				// background-* 属性值影响原始克隆值。
 				if (!support.clearCloneStyle && value === "" && name.indexOf("background") === 0) {
 					style[name] = "inherit";
 				}

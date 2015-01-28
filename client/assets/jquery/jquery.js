@@ -11,7 +11,9 @@
  *
  * Date: 2014-12-18T15:11Z
  */
-
+/*
+READ TIMES :  2
+ */
 (function(global, factory) {
 	if (typeof module === "object" && typeof module.exports === "object") {
 		// For CommonJS and CommonJS-like environments where a proper `window`
@@ -35,14 +37,15 @@
 
 	// Pass this if window is not defined yet
 }(typeof window !== "undefined" ? window : this, function(window, noGlobal) {
-
+	console.log(noGlobal); //noGlobal == undefined
+	//此2.0以后的版本相比较1.＊的版本自调用匿名函数有了不小的改动。
 	// Support: Firefox 18+
 	// Can't be in strict mode, several libs including ASP.NET trace
 	// the stack via arguments.caller.callee and Firefox dies if
 	// you try to trace through "use strict" call chains. (#13335)
-	//
+	//严格模式下firefox调用arguments.caller.callee或许会挂掉
 
-	var arr = [];
+	var arr = []; //Array
 	var slice = arr.slice;
 
 	var concat = arr.concat;
@@ -51,7 +54,7 @@
 
 	var indexOf = arr.indexOf;
 
-	var class2type = {};
+	var class2type = {}; //Object
 
 	var toString = class2type.toString;
 
@@ -64,13 +67,14 @@
 	console.log(push);
 	console.log(indexOf);
 	console.log(toString);
-
+	/**Module1*************************************jQuery 初始化、函数扩展***************************************************************************************************/
 	var
 	// Use the correct document accordingly with window argument (sandbox)
 		document = window.document,
 		version = "2.1.3",
 
 		// Define a local copy of jQuery
+		// 当地备份一个JQUERY
 		jQuery = function(selector, context) {
 			// The jQuery object is actually just the init constructor 'enhanced'
 			// Need init if jQuery is called (just allow error to be thrown if not included)
@@ -79,6 +83,7 @@
 
 		// Support: Android<4.1
 		// Make sure we trim BOM and NBSP
+		// 给bom & NBSP  减肥。
 		rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
 
 		// Matches dashed string for camelizing
@@ -86,10 +91,10 @@
 		rdashAlpha = /-([\da-z])/gi,
 
 		// Used by jQuery.camelCase as callback to replace()
-		fcamelCase = function(all, letter) {
+		fcamelCase = function(all, letter) { //返回大写
 			return letter.toUpperCase();
 		};
-
+	//这里构造jquery对象，后面的都是它的扩展。
 	jQuery.fn = jQuery.prototype = {
 		// The current version of jQuery being used
 		jquery: version,
@@ -174,32 +179,34 @@
 		},
 
 		// For internal use only.
+		// 仅做内部使用
 		// Behaves like an Array's method, not like a jQuery method.
 		// 表现的像一个数组方法，不像jquery 方法
 		push: push,
 		sort: arr.sort,
 		splice: arr.splice
 	};
-	jQuery.extend = jQuery.fn.extend = function() {
+	jQuery.extend = jQuery.fn.extend = function() { //jquery 扩展方法，处理传入的参数
 		var options, name, src, copy, copyIsArray, clone,
-			target = arguments[0] || {},
+			target = arguments[0] || {}, //从第一个参数开始
 			i = 1,
 			length = arguments.length,
 			deep = false;
 		// console.log(arguments);
 		// Handle a deep copy situation
 		// 处理一个深度拷贝情况
+		// console.log(length);
 		if (typeof target === "boolean") {
 			deep = target;
 
 			// Skip the boolean and the target
-			target = arguments[i] || {};
+			target = arguments[i] || {}; //从第二个开始
 			// console.log(target);
 			i++;
 		}
 
 		// Handle case when target is a string or something (possible in deep copy)
-		// 处理目标是字符串或者深度拷贝的情况
+		// 处理目标是字符串或者深度拷贝的情况，不是对象也不是函数，则将目标对象设置为空对象。
 		if (typeof target !== "object" && !jQuery.isFunction(target)) {
 			target = {};
 		}
@@ -214,12 +221,16 @@
 		for (; i < length; i++) {
 			// Only deal with non-null/undefined values
 			// 仅仅处理非空、定义过的值
+			// console.log(arguments[i]);
+			// console.log(options);
 			if ((options = arguments[i]) != null) {
 				// Extend the base object
+				// console.log(options);
 				for (name in options) {
 					src = target[name];
 					copy = options[name];
-
+					// console.log(src + 'src');
+					// console.log(copy + 'copy');
 					// Prevent never-ending loop
 					// 阻止死循环
 					if (target === copy) {
@@ -231,7 +242,7 @@
 					if (deep && copy && (jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)))) {
 						if (copyIsArray) {
 							copyIsArray = false;
-							clone = src && jQuery.isArray(src) ? src : [];
+							clone = src && jQuery.isArray(src) ? src : []; //clone  是src的修正值
 
 						} else {
 							clone = src && jQuery.isPlainObject(src) ? src : {};
@@ -239,6 +250,7 @@
 
 						// Never move original objects, clone them
 						// 千万不要动原始对象，可以克隆它们
+						// 第一个参数是 布尔值，第二个是克隆对象，第三个是拷贝对象，arguments[1]\argument[2]的区别是什么？
 						target[name] = jQuery.extend(deep, clone, copy);
 
 						// Don't bring in undefined values
@@ -321,6 +333,7 @@
 		},
 
 		// Evaluates a script in a global context
+		// 在全局上下文里执行一个脚本
 		globalEval: function(code) {
 			var script,
 				indirect = eval;
@@ -346,7 +359,7 @@
 		// Convert dashed to camelCase; used by the css and data modules
 		// Support: IE9-11+
 		// Microsoft forgot to hump their vendor prefix (#9572)
-		camelCase: function(string) {
+		camelCase: function(string) { //驼峰
 			return string.replace(rmsPrefix, "ms-").replace(rdashAlpha, fcamelCase);
 		},
 
@@ -355,13 +368,14 @@
 		},
 
 		// args is for internal usage only
+		// 参数仅仅作为内部使用
 		each: function(obj, callback, args) {
 			var value,
 				i = 0,
 				length = obj.length,
-				isArray = isArraylike(obj);
+				isArray = isArraylike(obj); //判断是否为类数组对象
 
-			if (args) {
+			if (args) { //有args数组，调用apply
 				if (isArray) {
 					for (; i < length; i++) {
 						value = callback.apply(obj[i], args);
@@ -381,7 +395,7 @@
 				}
 
 				// A special, fast, case for the most common use of each
-			} else {
+			} else { //无args数组，调用call
 				if (isArray) {
 					for (; i < length; i++) {
 						value = callback.call(obj[i], i, obj[i]);
@@ -406,6 +420,8 @@
 
 		// Support: Android<4.1
 		trim: function(text) {
+			// console.log(text);
+			// console.log(rtrim);
 			return text == null ?
 				"" :
 				(text + "").replace(rtrim, "");
@@ -541,28 +557,29 @@
 	// Populate the class2type map
 	jQuery.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function(i, name) {
 		class2type["[object " + name + "]"] = name.toLowerCase();
+		// console.log(class2type);
 	});
 
 	function isArraylike(obj) {
-		var length = obj.length,
-			type = jQuery.type(obj);
+			var length = obj.length,
+				type = jQuery.type(obj);
 
-		if (type === "function" || jQuery.isWindow(obj)) {
-			return false;
+			if (type === "function" || jQuery.isWindow(obj)) { //如果是函数类型或者是窗口对象的话，返回false
+				return false;
+			}
+
+			if (obj.nodeType === 1 && length) { //是元素节点并且长度大于零
+				return true;
+			}
+
+			return type === "array" || length === 0 ||
+				typeof length === "number" && length > 0 && (length - 1) in obj;
 		}
-
-		if (obj.nodeType === 1 && length) {
-			return true;
-		}
-
-		return type === "array" || length === 0 ||
-			typeof length === "number" && length > 0 && (length - 1) in obj;
-	}
-
-	/*
-	Sizzle 选择器
-	var seletor = (function(window){})(window);
-	 */
+		/***Module2******************************************选择器Sizzle******************************************************/
+		/*
+		Sizzle 选择器
+		var seletor = (function(window){})(window);
+		 */
 	var Sizzle =
 		/*!
 		 * Sizzle CSS Selector Engine v2.2.0-pre
@@ -589,6 +606,7 @@
 				hasDuplicate,
 
 				// Local document vars
+				// 一些局部变量
 				setDocument,
 				document,
 				docElem,
@@ -599,6 +617,7 @@
 				contains,
 
 				// Instance-specific data
+				// 详细实例数据
 				expando = "sizzle" + 1 * new Date(),
 				preferredDoc = window.document,
 				dirruns = 0,
@@ -617,6 +636,7 @@
 				MAX_NEGATIVE = 1 << 31,
 
 				// Instance methods
+				// 实例方法
 				hasOwn = ({}).hasOwnProperty,
 				arr = [],
 				pop = arr.pop,
@@ -639,6 +659,7 @@
 				booleans = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",
 
 				// Regular expressions
+				// 下面是选择器的一些正则表达式
 
 				// Whitespace characters http://www.w3.org/TR/css3-selectors/#whitespace
 				whitespace = "[\\x20\\t\\r\\n\\f]",
@@ -669,13 +690,13 @@
 				")\\)|)",
 
 				// Leading and non-escaped trailing whitespace, capturing some non-whitespace characters preceding the latter
-				rwhitespace = new RegExp(whitespace + "+", "g"),
+				rwhitespace = new RegExp(whitespace + "+", "g"), //空白字符
 				rtrim = new RegExp("^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" + whitespace + "+$", "g"),
 
-				rcomma = new RegExp("^" + whitespace + "*," + whitespace + "*"),
-				rcombinators = new RegExp("^" + whitespace + "*([>+~]|" + whitespace + ")" + whitespace + "*"),
+				rcomma = new RegExp("^" + whitespace + "*," + whitespace + "*"), //逗号
+				rcombinators = new RegExp("^" + whitespace + "*([>+~]|" + whitespace + ")" + whitespace + "*"), //混合符号
 
-				rattributeQuotes = new RegExp("=" + whitespace + "*([^\\]'\"]*?)" + whitespace + "*\\]", "g"),
+				rattributeQuotes = new RegExp("=" + whitespace + "*([^\\]'\"]*?)" + whitespace + "*\\]", "g"), //应用属性
 
 				rpseudo = new RegExp(pseudos),
 				ridentifier = new RegExp("^" + identifier + "$"),
@@ -715,6 +736,7 @@
 					// NaN means non-codepoint
 					// Support: Firefox<24
 					// Workaround erroneous numeric interpretation of +"0x"
+					// 关于数字字符编译错误的变通方法
 					return high !== high || escapedWhitespace ?
 						escaped :
 						high < 0 ?
@@ -1280,7 +1302,7 @@
 				hasCompare = rnative.test(docElem.compareDocumentPosition);
 
 				// Element contains another
-				// Purposefully does not implement inclusive descendent
+				// Purposefully does not implement inclusive descendent（全部后代）
 				// As in, an element does not contain itself
 				contains = hasCompare || rnative.test(docElem.contains) ?
 					function(a, b) {
@@ -1323,17 +1345,20 @@
 						}
 
 						// Calculate position if both inputs belong to the same document
+						// 计算所有属于同样文档的输入元素的位置
 						compare = (a.ownerDocument || a) === (b.ownerDocument || b) ?
 							a.compareDocumentPosition(b) :
 
 							// Otherwise we know they are disconnected
+							// 不然我们知道他们断开链接了。
 							1;
 
 						// Disconnected nodes
+						// & 与操作  转化成二进制来对比
 						if (compare & 1 ||
 							(!support.sortDetached && b.compareDocumentPosition(a) === compare)) {
-
 							// Choose the first element that is related to our preferred document
+							// 选择相关优先文档中的第一个元素
 							if (a === doc || a.ownerDocument === preferredDoc && contains(preferredDoc, a)) {
 								return -1;
 							}
@@ -1374,11 +1399,13 @@
 								0;
 
 							// If the nodes are siblings, we can do a quick check
+							// 如果是兄弟节点，做个快速检查
 						} else if (aup === bup) {
 							return siblingCheck(a, b);
 						}
 
 						// Otherwise we need full lists of their ancestors for comparison
+						// 或者我们需要他们的祖先列表来做比较
 						cur = a;
 						while ((cur = cur.parentNode)) {
 							ap.unshift(cur);
@@ -1389,15 +1416,18 @@
 						}
 
 						// Walk down the tree looking for a discrepancy
+						// 遍历树寻找差异 
 						while (ap[i] === bp[i]) {
 							i++;
 						}
 
 						return i ?
 							// Do a sibling check if the nodes have a common ancestor
+							// 如果节点有一个共同祖先，做兄弟节点检查。
 							siblingCheck(ap[i], bp[i]) :
 
 							// Otherwise nodes in our document sort first
+							// 文档里的节点首先排序
 							ap[i] === preferredDoc ? -1 :
 							bp[i] === preferredDoc ? 1 :
 							0;
@@ -1581,7 +1611,7 @@
 							match[3] = " " + match[3] + " ";
 						}
 
-						return match.slice(0, 4);
+						return match.slice(0, 4); //属性节点
 					},
 
 					"CHILD": function(match) {
@@ -1613,7 +1643,7 @@
 							Sizzle.error(match[0]);
 						}
 
-						return match;
+						return match; //孩子节点
 					},
 
 					"PSEUDO": function(match) {
@@ -1641,7 +1671,7 @@
 						}
 
 						// Return only captures needed by the pseudo filter method (type and argument)
-						return match.slice(0, 3);
+						return match.slice(0, 3); //伪类
 					}
 				},
 
@@ -1655,7 +1685,7 @@
 							} :
 							function(elem) {
 								return elem.nodeName && elem.nodeName.toLowerCase() === nodeName;
-							};
+							}; //标签
 					},
 
 					"CLASS": function(className) {
@@ -1665,10 +1695,10 @@
 							(pattern = new RegExp("(^|" + whitespace + ")" + className + "(" + whitespace + "|$)")) &&
 							classCache(className, function(elem) {
 								return pattern.test(typeof elem.className === "string" && elem.className || typeof elem.getAttribute !== "undefined" && elem.getAttribute("class") || "");
-							});
+							}); //类
 					},
 
-					"ATTR": function(name, operator, check) {
+					"ATTR": function(name, operator, check) { //属性值
 						return function(elem) {
 							var result = Sizzle.attr(elem, name);
 
@@ -1692,7 +1722,7 @@
 						};
 					},
 
-					"CHILD": function(type, what, argument, first, last) {
+					"CHILD": function(type, what, argument, first, last) { //子结点过滤
 						var simple = type.slice(0, 3) !== "nth",
 							forward = type.slice(-4) !== "last",
 							ofType = what === "of-type";
@@ -2656,6 +2686,7 @@
 	jQuery.isXMLDoc = Sizzle.isXML;
 	jQuery.contains = Sizzle.contains;
 
+	/***Module3******************************************Dom遍历******************************************************/
 
 
 	var rneedsContext = jQuery.expr.match.needsContext;
@@ -3074,12 +3105,13 @@
 	// Convert String-formatted options into Object-formatted ones and store in cache
 	// 将格式化字符串转化成格式化对象，存到缓存里头。
 	function createOptions(options) {
-		var object = optionsCache[options] = {};
-		jQuery.each(options.match(rnotwhite) || [], function(_, flag) {
-			object[flag] = true;
-		});
-		return object;
-	}
+			var object = optionsCache[options] = {};
+			jQuery.each(options.match(rnotwhite) || [], function(_, flag) {
+				object[flag] = true;
+			});
+			return object;
+		}
+		/***Module4******************************************回调请求******************************************************/
 
 	/*
 	 * Create a callback list using the following parameters:
@@ -3276,9 +3308,10 @@
 
 		return self;
 	};
+	/***Module5******************************************异步队列deferered******************************************************/
 
 	//deferred & when
-	//推迟
+	//延迟队列
 	jQuery.extend({
 
 		Deferred: function(func) {
@@ -3425,7 +3458,7 @@
 	// The deferred used on DOM ready
 	var readyList;
 
-	jQuery.fn.ready = function(fn) {//$(document).ready(fn)
+	jQuery.fn.ready = function(fn) { //$(document).ready(fn)
 		// Add the callback
 		jQuery.ready.promise().done(fn);
 
@@ -3573,6 +3606,7 @@
 			len ? fn(elems[0], key) : emptyGet;
 	};
 
+	/***Module6******************************************数据缓存******************************************************/
 
 	/**
 	 * Determines whether an object can have data
@@ -3777,8 +3811,14 @@
 	//		paths to a single mechanism.
 	//	3. Use the same single mechanism to support "private" and "user" data.
 	//	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
-	//	5. Avoid exposing implementation details on user objects (eg. expando properties)
+	//	5. Avoid exposing implementation details on user objects (eg. expando properties 扩大属性)
 	//	6. Provide a clear path for implementation upgrade to WeakMap in 2014
+	//	实施纲要
+	//	1.加强api接口和语义的兼容性。
+	//	2.通过减少单一机制的存储路径以便提高模块的可维护性。
+	//	3.用同样的机制支持私有和用户数据。
+	//  4.绝对不要暴露私有数据到用户代码
+	//	5.尽量避免暴露用户对象的实施细节
 
 	var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,
 		rmultiDash = /([A-Z])/g;
@@ -4136,6 +4176,7 @@
 			return document.activeElement;
 		} catch (err) {}
 	}
+	/***Module7******************************************事件系统 Event******************************************************/
 
 	/*
 	 * Helper functions for managing events -- not part of the public interface.
@@ -4977,6 +5018,7 @@
 		}
 	});
 
+	/***Module7******************************************DOM 操作******************************************************/
 
 	var
 		rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
@@ -5552,6 +5594,7 @@
 		};
 	});
 
+	/***Module8******************************************样式操作 CSS******************************************************/
 
 	var iframe,
 		elemdisplay = {};
@@ -7626,6 +7669,7 @@
 	var rquery = (/\?/);
 
 
+	/***Module9******************************************异步请求ajax******************************************************/
 
 	// Support: Android 2.3
 	// Workaround failure to string-cast null input
@@ -9026,6 +9070,7 @@
 	});
 
 
+	/***Module10******************************************动画 Effects******************************************************/
 
 	jQuery.expr.filters.animated = function(elem) {
 		return jQuery.grep(jQuery.timers, function(fn) {

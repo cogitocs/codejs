@@ -76,6 +76,8 @@ READ TIMES :  2
 		// Define a local copy of jQuery
 		// 当地备份一个JQUERY
 		jQuery = function(selector, context) {
+			// console.log(selector);
+			// console.log(context)
 			// The jQuery object is actually just the init constructor 'enhanced'
 			// Need init if jQuery is called (just allow error to be thrown if not included)
 			return new jQuery.fn.init(selector, context);
@@ -95,6 +97,22 @@ READ TIMES :  2
 			return letter.toUpperCase();
 		};
 	//这里构造jquery对象，后面的都是它的扩展。
+	//jquery()构造函数有7种用法。
+	//1.jquery(selector,[,contect])
+	//2.jquery(html[,ownerDocument]) jquery(html,props)
+	//3.jquery(object)
+	//4.jquery();
+	//5.jquery(callback)
+	//6.jquery(element)\ jquery(elementArray)
+	//
+	//
+	//method1:  会根据selector表达式的不同来选择不同的方法 
+	//首先判断 selector 是html还是 选择器表达式
+	//（1）：getElementById 
+	// (2) : find sizzle 选择器
+	/*
+	 一些基本工具函数
+	 */
 	jQuery.fn = jQuery.prototype = {
 		// The current version of jQuery being used
 		jquery: version,
@@ -112,7 +130,9 @@ READ TIMES :  2
 		},
 
 		// Get the Nth element in the matched element set OR
+		// 得到匹配元素集中的第n个元素
 		// Get the whole matched element set as a clean array
+		// 将匹配到的元素放到一个空数组中
 		get: function(num) {
 			return num != null ?
 
@@ -139,6 +159,7 @@ READ TIMES :  2
 			ret.context = this.context;
 
 			// Return the newly-formed element set
+			// 返回生成的新元素集
 			return ret;
 		},
 
@@ -266,6 +287,7 @@ READ TIMES :  2
 	};
 	jQuery.extend({
 		// Unique for each copy of jQuery on the page
+		// 每个页面jquery拷贝的唯一标志
 		expando: "jQuery" + (version + Math.random()).replace(/\D/g, ""),
 
 		// Assume jQuery is ready without the ready module
@@ -432,7 +454,7 @@ READ TIMES :  2
 			var ret = results || [];
 
 			if (arr != null) {
-				if (isArraylike(Object(arr))) {
+				if (isArraylike(Object(arr))) {//数组或者伪数组
 					jQuery.merge(ret,
 						typeof arr === "string" ?
 						[arr] : arr
@@ -2477,6 +2499,7 @@ READ TIMES :  2
 							}
 
 							// Add matches to results
+							// 添加匹配到的到结果中
 							push.apply(results, setMatched);
 
 							// Seedless set matches succeeding multiple successful matchers stipulate sorting
@@ -2798,8 +2821,10 @@ READ TIMES :  2
 	var rootjQuery,
 
 		// A simple way to check for HTML strings
+		// 检查html字符串的简单方式
 		// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
 		// Strict HTML recognition (#11290: must start with <)
+		// 严格html检查
 		rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
 
 		init = jQuery.fn.init = function(selector, context) {
@@ -2814,6 +2839,7 @@ READ TIMES :  2
 			if (typeof selector === "string") {
 				if (selector[0] === "<" && selector[selector.length - 1] === ">" && selector.length >= 3) {
 					// Assume that strings that start and end with <> are HTML and skip the regex check
+					// 如果是html则跳过regex检查
 					match = [null, selector, null];
 
 				} else {
@@ -2903,9 +2929,9 @@ READ TIMES :  2
 
 	// Give the init function the jQuery prototype for later instantiation
 	init.prototype = jQuery.fn;
-
 	// Initialize central reference
 	rootjQuery = jQuery(document);
+// console.log(rquickExpr.exec(jQuery("<div><>")));
 
 
 	var rparentsprev = /^(?:parents|prev(?:Until|All))/,
@@ -5195,7 +5221,7 @@ READ TIMES :  2
 
 		buildFragment: function(elems, context, scripts, selection) {
 			var elem, tmp, tag, wrap, contains, j,
-				fragment = context.createDocumentFragment(),
+				fragment = context.createDocumentFragment(),//#document-fragment  文档片
 				nodes = [],
 				i = 0,
 				l = elems.length;
@@ -5212,10 +5238,12 @@ READ TIMES :  2
 						jQuery.merge(nodes, elem.nodeType ? [elem] : elem);
 
 						// Convert non-html into a text node
+						// 将非html转换成文本节点
 					} else if (!rhtml.test(elem)) {
 						nodes.push(context.createTextNode(elem));
 
 						// Convert html into DOM nodes
+						// 将html转换成dom节点
 					} else {
 						tmp = tmp || fragment.appendChild(context.createElement("div"));
 
@@ -5235,9 +5263,11 @@ READ TIMES :  2
 						jQuery.merge(nodes, tmp.childNodes);
 
 						// Remember the top-level container
+						// 记住顶层容器
 						tmp = fragment.firstChild;
 
 						// Ensure the created nodes are orphaned (#12392)
+						// 确保创建的节点无父节点
 						tmp.textContent = "";
 					}
 				}
@@ -5251,6 +5281,7 @@ READ TIMES :  2
 
 				// #4087 - If origin and destination elements are the same, and this is
 				// that element, do not do anything
+				// 如果目标元素和当前元素相同。什么都不要做。
 				if (selection && jQuery.inArray(elem, selection) !== -1) {
 					continue;
 				}
@@ -5261,6 +5292,7 @@ READ TIMES :  2
 				tmp = getAll(fragment.appendChild(elem), "script");
 
 				// Preserve script evaluation history
+				// 保持 脚本评估历史,缓存 ，调用 data_priv
 				if (contains) {
 					setGlobalEval(tmp);
 				}

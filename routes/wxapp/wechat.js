@@ -29,13 +29,7 @@ var make_url = function(path, params) {
     return ret.join('');
 }
 
-// AccessToken是企业号的全局唯一票据，调用接口时需携带AccessToken。
-// 参数           必须   说明
-// appid         是    企业Id
-// appsecret     是    管理组的凭证密钥
-// 获取后的7200秒，即2个小时。 正常情况下AccessToken有效期为7200秒，有效期内重复获取返回相同结果，并自动续期。
-// 获取token，并存储到数据库中
-// Test: PASS
+
 
 var update_token = function(appid, appsecret, cb) {
     var uri = make_url('gettoken', {
@@ -138,10 +132,6 @@ module.exports.get_token = get_token; //获取token，用来像微信服务器�
 
 
 
-// －－－－－－－发送消息－－－－－－－
-// 权限要求
-// 需要管理员对应用有使用权限，对收件人touser、toparty、totag有查看权限，否则本次调用失败。
-
 // 返回结果
 var send_message = function(appid, appsecret, msg, cb) {
     async.waterfall([
@@ -200,22 +190,7 @@ var gen_text_message = function(mb) {
 
 module.exports.gen_text_message = gen_text_message;
 module.exports.send_message = send_message;
-/*-------------------------主动调用——结束----------------------------*/
 
-
-/*
-------------使用示例一：验证回调URL---------------
-*企业开启回调模式时，企业号会向验证url发送一个get请求 
-假设点击验证时，企业收到类似请求：
-* GET /cgi-bin/wxpush?msg_signature=5c45ff5e21c57e6ad56bac8758b79b1d9ac89fd3&timestamp=1409659589&nonce=263014780&echostr=P9nAzCzyDtyTWESHep1vC5X9xho%2FqYX3Zpb4yKa9SKld1DsH3Iyt3tP3zNdtp%2B4RPcs8TgAE7OaBO%2BFZXvnaqQ%3D%3D 
-* HTTP/1.1 Host: qy.weixin.qq.com
-
-接收到该请求时，企业应 1.解析出Get请求的参数，包括消息体签名(msg_signature)，时间戳(timestamp)，随机数字串(nonce)以及公众平台推送过来的随机加密字符串(echostr),
-这一步注意作URL解码。
-2.验证消息体签名的正确性 
-3. 解密出echostr原文，将原文当作Get请求的response，返回给公众平台
-第2，3步可以用公众平台提供的库函数VerifyURL来实现。
-*/
 var VerifyURL = function(sVerifyMsgSig, sVerifyTimeStamp, sVerifyNonce, sVerifyEchoStr, cb) {
     var shasum = crypto.createHash('sha1');
     var arr = [sToken, sVerifyTimeStamp, sVerifyNonce, sVerifyEchoStr].sort();

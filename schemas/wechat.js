@@ -3,9 +3,9 @@
 var mongoose = require('mongoose');
 var valid = require('../routes/valid');
 var async = require('async');
-//------- 微信企业号
+//------- 微信
 var QYWXTokenSchema = mongoose.Schema({
-    apppid: String, //企业号的企业id
+    apppid: String, //id
     apppsecret: String, //管理组的凭证密钥
     token: String, //token 字符串
     get_ts: Date, //获取的时间撮

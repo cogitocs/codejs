@@ -37,4 +37,6 @@ CodeLife Project:
      3.将学到的前端技能渐渐用到项目中来。实践才能出真知。
      4.the important is to learning theory & act it.
 
-
+2015-01-30
+     1. commit 6 days. keep it !
+     2. read mootools source code . not only jQuery!

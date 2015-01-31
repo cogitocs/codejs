@@ -40,3 +40,4 @@ CodeLife Project:
 2015-01-30
      1. commit 6 days. keep it !
      2. read mootools source code . not only jQuery!
+     3.to be a mootools contributers.

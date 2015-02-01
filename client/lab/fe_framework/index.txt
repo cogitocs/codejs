@@ -1,0 +1,7 @@
+////////////////***************前端库或者框架*******************///////////////
+1.backbonejs  mvc
+2.angularjs   mvvm
+3.jquery      js 库
+4.jquery-mobile ui框架
+5.bootstrap  css框架
+6.mootools    js库

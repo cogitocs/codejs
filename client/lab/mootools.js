@@ -39,7 +39,7 @@ this.MooTools = {
 	version: '1.4.5',
 	build: '74e34796f5f76640cdb98853004650aea1499d69'
 };
-
+console.log(this);
 // typeOf, instanceOf
 
 var typeOf = this.typeOf = function(item){

@@ -23,7 +23,7 @@ license: MIT-style license.
 copyright: Copyright (c) 2006-2012 [Valerio Proietti](http://mad4milk.net/).
 
 authors: The MooTools production team (http://mootools.net/developers/)
-
+参考借鉴了basejs\prototype.js
 inspiration:
   - Class implementation inspired by [Base.js](http://dean.edwards.name/weblog/2006/03/base/) Copyright (c) 2006 Dean Edwards, [GNU Lesser General Public License](http://opensource.org/licenses/lgpl-license.php)
   - Some functionality inspired by [Prototype.js](http://prototypejs.org) Copyright (c) 2005-2007 Sam Stephenson, [MIT License](http://opensource.org/licenses/mit-license.php)
@@ -41,12 +41,12 @@ this.MooTools = {
 };
 console.log(this);
 // typeOf, instanceOf
-
+//类型检测
 var typeOf = this.typeOf = function(item){
 	if (item == null) return 'null';
 	if (item.$family != null) return item.$family();
 
-	if (item.nodeName){
+	if (item.nodeName){//为什么只检测1、3两个节点？？？
 		if (item.nodeType == 1) return 'element';
 		if (item.nodeType == 3) return (/\S/).test(item.nodeValue) ? 'textnode' : 'whitespace';
 	} else if (typeof item.length == 'number'){
@@ -71,7 +71,7 @@ var instanceOf = this.instanceOf = function(item, object){
 };
 
 // Function overloading
-
+//函数重载
 var Function = this.Function;
 
 var enumerables = true;
@@ -114,7 +114,7 @@ Function.prototype.overloadGetter = function(usePlural){
 
 Function.prototype.extend = function(key, value){
 	this[key] = value;
-}.overloadSetter();
+}.overloadSetter();//还可以这么写？
 
 Function.prototype.implement = function(key, value){
 	this.prototype[key] = value;
@@ -143,7 +143,7 @@ Number.from = function(item){
 String.from = function(item){
 	return item + '';
 };
-
+console.log(String);
 // hide, protect
 
 Function.implement({

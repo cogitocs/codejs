@@ -41,3 +41,6 @@ CodeLife Project:
      1. commit 6 days. keep it !
      2. read mootools source code . not only jQuery!
      3.to be a mootools contributers.
+2015-02-03
+     1.what is RWD?
+     2.which project will you choose to contribute?

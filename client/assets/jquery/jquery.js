@@ -3386,9 +3386,11 @@ READ TIMES :  2
 				deferred = {};
 
 			// Keep pipe for back-compat
+			// 往后兼容
 			promise.pipe = promise.then;
 
 			// Add list-specific methods
+			// 添加一些特定的方法
 			jQuery.each(tuples, function(i, tuple) {
 				var list = tuple[2],
 					stateString = tuple[3];
@@ -3418,6 +3420,7 @@ READ TIMES :  2
 			promise.promise(deferred);
 
 			// Call given func if any
+			// 调用任何已有的函数
 			if (func) {
 				func.call(deferred, deferred);
 			}
@@ -3482,10 +3485,12 @@ READ TIMES :  2
 
 
 	// The deferred used on DOM ready
+	// DOM ready 调用了deferred
 	var readyList;
 
 	jQuery.fn.ready = function(fn) { //$(document).ready(fn)
 		// Add the callback
+		// 添加回调
 		jQuery.ready.promise().done(fn);
 
 		return this;
@@ -3493,6 +3498,7 @@ READ TIMES :  2
 
 	jQuery.extend({
 		// Is the DOM ready to be used? Set to true once it occurs.
+		// dom已经准备就绪了?
 		isReady: false,
 
 		// A counter to track how many items to wait for before

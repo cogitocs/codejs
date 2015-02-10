@@ -35,7 +35,7 @@
  * @returns {function(code:string, template:string, ...templateArgs): Error} minErr instance
  */
 
-function minErr(module, ErrorConstructor) {
+function minErr(module, ErrorConstructor) {//错误处理函数
   ErrorConstructor = ErrorConstructor || Error;
   return function() {
     var code = arguments[0],
@@ -178,7 +178,7 @@ var REGEX_STRING_REGEXP = /^\/(.+)\/([a-z]*)$/;
 // This is used so that it's possible for internal tests to create mock ValidityStates.
 var VALIDITY_STATE_PROPERTY = 'validity';
 
-/**
+/**字符串处理函数
  * @ngdoc function
  * @name angular.lowercase
  * @module ng
@@ -221,6 +221,7 @@ var manualUppercase = function(s) {
 // String#toLowerCase and String#toUpperCase don't produce correct results in browsers with Turkish
 // locale, for this reason we need to detect this case and redefine lowercase/uppercase methods
 // with correct but slower alternatives.
+// 如果浏览器里结果不正确，重新定义操作函数
 if ('i' !== 'I'.toLowerCase()) {
   lowercase = manualLowercase;
   uppercase = manualUppercase;

@@ -58,3 +58,7 @@ CodeLife Project:
      2.css 兼容问题。
      3.机器学习
      4.但行好事,少问对错。
+     5.octave
+2015-02-09
+     1.研究了下cdp_cloud微信端的技术架构，bs3 + backbone + requirejs + underscore.js
+     2.将触手渗进angularjs \backbonejs内部

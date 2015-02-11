@@ -26057,6 +26057,7 @@ var styleDirective = valueFn({
   }
 
   //try to bind to jquery now so that one can write jqLite(document).ready()
+  //绑定到jquery
   //but we will rebind on bootstrap again.
   bindJQuery();
 

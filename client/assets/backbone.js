@@ -1595,6 +1595,7 @@
   };
 
   // Wrap an optional error callback with a fallback error event.
+  // 用fallback error 事件打包一个可选的错误回调函数
   var wrapError = function(model, options) {
     var error = options.error;
     options.error = function(resp) {

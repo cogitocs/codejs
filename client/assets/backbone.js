@@ -1274,6 +1274,7 @@
     // Bind all defined routes to `Backbone.history`. We have to reverse the
     // order of the routes here to support behavior where the most general
     // routes can be defined at the bottom of the route map.
+    //将所有已经定义的路由绑定到Backbone.history.我们必须反转路由顺序以便支持浏览器行为，最普通的路由可能会被定义到路由地图中的底部。
     _bindRoutes: function() {
       if (!this.routes) return;
       this.routes = _.result(this, 'routes');
@@ -1285,6 +1286,7 @@
 
     // Convert a route string into a regular expression, suitable for matching
     // against the current location hash.
+    // 将路由字符串转换成正则表示，用来匹配当前地址对象中的哈希数据。
     _routeToRegExp: function(route) {
       route = route.replace(escapeRegExp, '\\$&')
                    .replace(optionalParam, '(?:$1)?')
@@ -1298,10 +1300,12 @@
     // Given a route, and a URL fragment that it matches, return the array of
     // extracted decoded parameters. Empty or unmatched parameters will be
     // treated as `null` to normalize cross-browser behavior.
+    // 将匹配到的路由或者url片，解码成数组参数后返回。空的或者没有匹配到的参数在普通跨浏览器行为中将被当作null.
     _extractParameters: function(route, fragment) {
       var params = route.exec(fragment).slice(1);
       return _.map(params, function(param, i) {
         // Don't decode the search params.
+        // 不要解码搜索参数
         if (i === params.length - 1) return param || null;
         return param ? decodeURIComponent(param) : null;
       });
@@ -1567,6 +1571,7 @@
     }
 
     // Add static properties to the constructor function, if supplied.
+    // 添加静态属性到构造函数
     _.extend(child, parent, staticProps);
 
     // Set the prototype chain to inherit from `parent`, without calling
@@ -1576,10 +1581,12 @@
     child.prototype = new Surrogate;
 
     // Add prototype properties (instance properties) to the subclass,
+    // 添加子类的继承属性
     // if supplied.
     if (protoProps) _.extend(child.prototype, protoProps);
 
     // Set a convenience property in case the parent's prototype is needed
+    // 设置一个方便属性。
     // later.
     child.__super__ = parent.prototype;
 

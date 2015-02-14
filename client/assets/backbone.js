@@ -1195,6 +1195,7 @@
       !(window.XMLHttpRequest && (new XMLHttpRequest).dispatchEvent);
 
   // Map from CRUD to HTTP for our default `Backbone.sync` implementation.
+  // 映射增删改查到http,做为backbone.sync的实施。
   var methodMap = {
     'create': 'POST',
     'update': 'PUT',

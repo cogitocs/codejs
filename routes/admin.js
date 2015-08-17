@@ -10,7 +10,7 @@ var index = function(req, res) {
 	PostAdd.find({}).exec(function(err, data) {
 		render_data.data = data;
 		console.log(data.length);
-		res.render('index', render_data);
+		res.render('welcome', render_data);
 
 	})
 }

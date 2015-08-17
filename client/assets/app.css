@@ -84,3 +84,16 @@ nav .container {
   z-index: 10000;
   background-color: #0078d8;
 }
+.font_italic{
+  font-style: italic;
+}
+.sign{
+  text-align: center;
+  display: block;
+  padding-left: 200px;
+  font-size: 12px;
+  opacity: 0.5
+}
+.background_reset{
+  background-color: #EFF4DD !important;
+}

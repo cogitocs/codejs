@@ -66,3 +66,4 @@ CodeLife Project:
 
 2015-08-19
      1.add static.js  and try piwik  / install mysql apache and php
+     2.add resources for myself

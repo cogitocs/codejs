@@ -62,3 +62,7 @@ CodeLife Project:
 2015-02-09
      1.研究了下cdp_cloud微信端的技术架构，bs3 + backbone + requirejs + underscore.js
      2.将触手渗进angularjs \backbonejs内部
+
+
+2015-08-19
+     1.add static.js  and try piwik  / install mysql apache and php

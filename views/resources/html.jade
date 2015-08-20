@@ -1,0 +1,37 @@
+extends ../layout
+block title
+  title #{title}
+block content      
+  body.background_reset
+    .container
+      .modal-dialog.modal-sm(style="min-width:220px;text-align:center")
+        h3.font_italic HTML Magic
+      h4 Pure HTML
+      ul
+        li
+          a(href="http://pattle.github.io/simpsons-in-css/",target="_blank") The Simpsons in CSS
+        li
+          a(href="http://info.9iphp.com/18-things-built-with-css/",title="http://www.hongkiat.com/blog/built-with-css/",target="_blank") 18-things-built-with-css
+        li
+          a(href="http://nicolasgallagher.com/pure-css-gui-icons/demo/",target="_blank") Pure css icon
+        li
+          a(href="http://cssmenumaker.com/pure-css-menus",target="_blank") Pure css menus
+        li
+          a(href="http://saeedalipoor.github.io/icono/",target="_blank") Pure css icono
+        li
+          a(href="http://one-div.com/",target="_blank") Pure css one div
+        li
+          a(href="http://www.designzzz.com/free-pure-css-icons/",target="_blank") Resources
+        li
+          a(href="http://www.hongkiat.com/blog/css-3d-shape-tridiv/",target="_blank") CSS 3D
+      h4 HTML Framework
+      ul
+        li
+          a(href="https://wordpress.org/themes/",target="_blank") Theme Directory
+        li
+          a(href="http://purecss.io/grids/",target="_blank") Pure css 
+
+  script(data-main="/pagejs/app", src='/assets/require.js', type='text/javascript')
+
+
+  block page_script

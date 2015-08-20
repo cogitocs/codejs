@@ -1,0 +1,17 @@
+extends ../layout
+block title
+  title #{title}
+block content      
+  body.background_reset
+    .container
+      .modal-dialog.modal-sm(style="min-width:220px;text-align:center")
+        h3.font_italic JS Magic
+      h4 Pure JS
+      ul
+      h4 JS Framework
+      ul
+
+  script(data-main="/pagejs/app", src='/assets/require.js', type='text/javascript')
+
+
+  block page_script

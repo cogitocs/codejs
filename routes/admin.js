@@ -13,16 +13,32 @@ var index = function(req, res) {
 
 	})
 }
-var resources = function(req, res) {
+var resources_css = function(req, res) {
 	var render_data = {
 		title: 'Code Js',
 	}
 	res.render('resources/css', render_data);
 
 }
+var resources_js = function(req, res) {
+	var render_data = {
+		title: 'Code Js',
+	}
+	res.render('resources/js', render_data);
+
+}
+var resources_html = function(req, res) {
+	var render_data = {
+		title: 'Code Js',
+	}
+	res.render('resources/html', render_data);
+
+}
 module.exports = function(app) {
 	app.get('/', index);
-	app.get('/resources/css', resources);
+	app.get('/resources/css', resources_css);
+	app.get('/resources/js', resources_js);
+	app.get('/resources/html', resources_html);
 
 	require('./admin/login')(app);
 }

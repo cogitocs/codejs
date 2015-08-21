@@ -2,6 +2,9 @@
 Writed by 彭双辉。
 Email:gisipeng@gmail.com
 QQ:923097137 */
+body{
+  padding: 0px;
+}
 nav .container {
   color: white;
 }
@@ -95,5 +98,18 @@ nav .container {
   opacity: 0.5
 }
 .background_reset{
-  background-color: #EFF4DD !important;
+  background-color: white !important;
+
+}
+.width_50{
+  width: 50%;
+}
+.absolute{
+  position: absolute;
+}
+.black{
+  background-color: black;
+}
+.height_100{
+  height: 100%;
 }

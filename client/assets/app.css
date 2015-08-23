@@ -110,6 +110,20 @@ nav .container {
 .black{
   background-color: black;
 }
+.white{
+  color:white;
+}
 .height_100{
   height: 100%;
+}
+.margin_top_50{
+  margin-top: 50%;
+}
+.position_left{
+  position: absolute;
+  left:0px;
+}
+.position_right{
+  position: absolute;
+  right:0px;
 }

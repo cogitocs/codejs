@@ -1,0 +1,27 @@
+extends ../layout
+block title
+  title #{title}
+block content      
+  body.background_reset
+    .width_50.height_100.absolute.black.white.position_left
+      .modal-dialog.modal-sm.margin_top_50(style="min-width:220px;text-align:center")
+       h4.font_italic  Welcome to Ivan Home!
+      span.sign Inspire yourself
+      span.sign Aug,17 2015 By @Ivan 
+
+    .width_50.height_100.absolute.position_right
+      .my_data    
+        ul
+          li.even.even_one
+          li.odd.odd_one
+          li.even.even_two
+          li.odd.odd_two
+          li.even.even_three
+          li.odd.odd_three
+          li.even.even_four
+          li.odd.odd_four
+  link(href='/assets/test.css', rel='stylesheet', type='text/css')
+  script(data-main="/pagejs/app", src='/assets/require.js', type='text/javascript')
+
+
+  block page_script

@@ -34,11 +34,19 @@ var resources_html = function(req, res) {
 	res.render('resources/html', render_data);
 
 }
+var test_border = function(req, res) {
+	var render_data = {
+		title: 'Code Js',
+	}
+	res.render('test/border', render_data);
+
+}
 module.exports = function(app) {
 	app.get('/', index);
 	app.get('/resources/css', resources_css);
 	app.get('/resources/js', resources_js);
 	app.get('/resources/html', resources_html);
+	app.get('/test/border', test_border);
 
 	require('./admin/login')(app);
 }

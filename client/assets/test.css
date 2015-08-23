@@ -1,0 +1,80 @@
+.my_data{
+	width: 300px;
+	height: 300px;
+	margin:0 auto;
+	top:50%;
+	background-color: aliceblue;
+	margin-top: 50px;
+}
+ul{
+	padding: 0px;
+	margin:0px;
+}
+ul > li.even {
+	list-style-type: none;
+	height: 30px;
+	  border: 1px solid gainsboro;
+	    background-color: gainsboro;
+}
+ul > li.even_one{
+	 border: 1px solid rgb(107, 107, 203) !important;
+	    background-color: rgb(107, 107, 203) !important;
+}
+ul > li.even_two{
+	 border: 1px solid rgb(202, 117, 150) !important;
+	    background-color: rgb(202, 117, 150) !important;
+}
+ul > li.even_three{
+	 border: 1px solid rgb(165, 169, 13) !important;
+	    background-color: rgb(165, 169, 13) !important;
+}
+ul > li.even_four{
+	 border: 1px solid rgb(139, 156, 176) !important;
+	    background-color: rgb(139, 156, 176) !important;
+}
+ul > li.odd {
+	list-style-type: none;
+	height: 20px;
+	  list-style-type: none;
+  height: 20px;
+  width: 20px;
+  margin: 0 auto;
+  border-left: 10px solid aliceblue;
+  border-top: 10px solid gainsboro;
+  border-right: 10px solid aliceblue;
+
+}
+ul > li.odd_one {
+
+  border-left: 10px solid aliceblue !important;
+  border-top: 10px solid rgb(107, 107, 203) !important;
+  border-right: 10px solid aliceblue !important;
+
+}
+ul > li.odd_two {
+
+  border-left: 10px solid aliceblue !important;
+  border-top: 10px solid rgb(202, 117, 150) !important;
+  border-right: 10px solid aliceblue !important;
+
+}
+ul > li.odd_three {
+
+  border-left: 10px solid aliceblue !important;
+  border-top: 10px solid rgb(202, 117, 150) !important;
+  border-right: 10px solid aliceblue !important;
+
+}
+ul > li.odd_four {
+
+  border-left: 10px solid aliceblue !important;
+  border-top: 10px solid rgb(139, 156, 176) !important;
+  border-right: 10px solid aliceblue !important;
+
+}
+ul >li.even:after{
+	content: "";
+	border:1px soild green;
+	width:5px;
+	height: 5px;
+};

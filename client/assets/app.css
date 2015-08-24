@@ -8,6 +8,14 @@ body{
 nav .container {
   color: white;
 }
+ul{
+	padding: 0px;
+	margin:0px;
+}
+ul > li {
+	list-style-type: none;
+
+}
 /* top & bottom */
 .nva_head_background {
   background: #04bafc;
@@ -64,10 +72,11 @@ nav .container {
 }
 .img {
   position: relative;
-  height: 150px;
+  height: 160px;
   width: 100%;
   overflow: hidden;
   background-color: #f2f2f2;
+  margin:25px;
 }
 .index_li {
   position: relative;
@@ -93,7 +102,6 @@ nav .container {
 .sign{
   text-align: center;
   display: block;
-  padding-left: 200px;
   font-size: 12px;
   opacity: 0.5
 }
@@ -116,6 +124,9 @@ nav .container {
 .height_100{
   height: 100%;
 }
+.width_25{
+  width: 25%;
+}
 .margin_top_50{
   margin-top: 50%;
 }
@@ -126,4 +137,25 @@ nav .container {
 .position_right{
   position: absolute;
   right:0px;
+}
+.img_margin{
+  margin:0 10px 10px 0;
+}
+.overflow_hidden{
+  overflow: hidden;
+}
+.background_radial{
+  background: #655;
+  background-image: radial-gradient(tan 20%, transparent 0), radial-gradient(tan 20%, transparent 0);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+.radius_500{
+    border-radius: 500px;
+}
+.idol_name{
+  position: relative;
+  left: -140px;
+  top: 90px;
+  display: inline-block;
 }

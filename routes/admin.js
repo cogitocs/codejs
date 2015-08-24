@@ -1,6 +1,8 @@
 var PostAdd = require('../models/post').PostAdd;
 var index = function(req, res) {
-	var blog_list = ["汪峰跨年求婚的最新相关信息", "邓紫棋太空", "新闻图集：泰国清迈小姐选美大赛 性感泳装美腿林立_9张图片", "呼格父母获赔偿", "自拍是一种病", "第65回nhk红白歌会战"]
+	var blog_list = ["汪峰跨年求婚的最新相关信息", "邓紫棋太空", "新闻图集：泰国清迈小姐选美大赛 性感泳装美腿林立_9张图片",
+		"呼格父母获赔偿", "自拍是一种病", "第65回nhk红白歌会战"
+	]
 
 	var render_data = {
 		title: 'Code Js',
@@ -8,6 +10,11 @@ var index = function(req, res) {
 	}
 	PostAdd.find({}).exec(function(err, data) {
 		render_data.data = data;
+		render_data.images = [
+			"lea_verou.jpeg",
+			"eric_meyer.jpg",
+			"eric_meyer.jpg"
+		]
 		console.log(data.length);
 		res.render('welcome', render_data);
 

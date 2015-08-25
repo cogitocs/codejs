@@ -1,0 +1,17 @@
+extends ../layout
+block title
+  title #{title}
+block content      
+  body.background_reset
+    .container
+      .modal-dialog.modal-sm(style="min-width:220px;text-align:center")
+        h3.font_italic CSS Magic
+      h4 Tech Conf
+      ul
+        li
+          a(href="http://speakerrate.com/",target="_blank") Speakers
+        li
+  script(data-main="/pagejs/app", src='/assets/require.js', type='text/javascript')
+
+
+  block page_script

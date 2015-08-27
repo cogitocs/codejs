@@ -74,3 +74,5 @@ for myself
 for mydata
 2015 - 08 - 24
 1. add image gallery
+2015-08-27
+ write no code,just sleep, ^--^

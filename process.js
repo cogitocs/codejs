@@ -76,3 +76,5 @@ for mydata
 1. add image gallery
 2015-08-27
  write no code,just sleep, ^--^
+2015-08-28
+ too tired, see the dead end.

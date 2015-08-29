@@ -1,0 +1,16 @@
+extends ../layout
+block title
+  title #{title}
+block content      
+  body.background_reset
+    .container
+      .modal-dialog.modal-sm(style="min-width:220px;text-align:center")
+        h3.font_italic Daily
+      h4 Daily-2015-08-29
+      ul
+        li
+          p Go to D-future conference,too far, too tired
+  script(data-main="/pagejs/app", src='/assets/require.js', type='text/javascript')
+
+
+  block page_script

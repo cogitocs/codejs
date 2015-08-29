@@ -48,12 +48,20 @@ var test_border = function(req, res) {
 	res.render('test/border', render_data);
 
 }
+var daily_daily = function(req, res) {
+	var render_data = {
+		title: 'Code Js',
+	}
+	res.render('daily/daily', render_data);
+
+}
 module.exports = function(app) {
 	app.get('/', index);
 	app.get('/resources/css', resources_css);
 	app.get('/resources/js', resources_js);
 	app.get('/resources/html', resources_html);
 	app.get('/test/border', test_border);
+	app.get('/daily/daily', daily_daily);
 
 	require('./admin/login')(app);
 }

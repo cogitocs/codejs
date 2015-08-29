@@ -78,3 +78,5 @@ for mydata
  write no code,just sleep, ^--^
 2015-08-28
  too tired, see the dead end.
+2015-08-29
+go to D-future, so far, too tired.
